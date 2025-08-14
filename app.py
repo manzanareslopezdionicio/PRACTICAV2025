@@ -45,6 +45,11 @@ def edadvalor(edad):
 def index():
     return render_template('index.html')
 
+#Metodo GET
+@app.route('/contacto', methods=['GET']) #Ruta para renderizar una plantilla HTML
+def contacto_get():
+    return render_template('contacto.html')
+
 @app.route('/contacto', methods=['GET', 'POST']) #Ruta para renderizar una plantilla HTML
 def contacto():
     if request.method == 'POST':
