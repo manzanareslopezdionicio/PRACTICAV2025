@@ -46,9 +46,35 @@ def index():
     return render_template('index.html')
 
 #Metodo GET
-@app.route('/contacto', methods=['GET']) #Ruta para renderizar una plantilla HTML
-def contacto_get():
-    return render_template('contacto.html')
+@app.route('/registro', methods=['GET']) #Ruta para renderizar una plantilla HTML
+def registro():
+    user = {
+        'name': '',
+        'email': '',
+        'mensaje': ''
+    }
+    if request.method == 'GET':
+        user['name'] = request.args.get('nombre', '')
+        user['email'] = request.args.get('email', '')
+        user['mensaje'] = request.args.get('mensaje', '')
+    return render_template('contacto.html', usuario=user)
+
+ #Metodo POST
+
+@app.route('/registro1', methods=['GET', 'POST']) #Ruta para renderizar una plantilla HTML
+def contacto_post():
+    user = {
+        'name': '',
+        'email': '',
+        'mensaje': ''
+    }
+    if request.method == 'POST':
+        user['name'] = request.form['nombre']
+        user['email'] = request.form['email']
+        user['mensaje'] = request.form['mensaje']
+
+    return render_template('usuario.html', usuario=user)
+
 
 @app.route('/contacto', methods=['GET', 'POST']) #Ruta para renderizar una plantilla HTML
 def contacto():
