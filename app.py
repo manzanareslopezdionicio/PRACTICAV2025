@@ -57,10 +57,9 @@ def registro():
         user['name'] = request.args.get('nombre', '')
         user['email'] = request.args.get('email', '')
         user['mensaje'] = request.args.get('mensaje', '')
-    return render_template('contacto.html', usuario=user)
+    return render_template('contactoget.html', usuario=user)
 
  #Metodo POST
-
 @app.route('/registro1', methods=['GET', 'POST']) #Ruta para renderizar una plantilla HTML
 def contacto_post():
     user = {
@@ -83,11 +82,12 @@ def contacto():
         nombre = request.form.get('nombre')
         email = request.form.get('email')
         mensaje = request.form.get('mensaje')
-        pprint(request.form)
-        pprint(f'Nombre: {nombre}, Email: {email}, Mensaje: {mensaje}')
+        #pprint(request.form)
+        #pprint(f'Nombre: {nombre}, Email: {email}, Mensaje: {mensaje}')
         return 'Mensaje enviado!.'
     else:
         return render_template('contacto.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
