@@ -4,12 +4,21 @@ from pprint import pprint
 app = Flask(__name__) #Creando el objeto aplicacion
  
 @app.route('/') #Decorador Ruta principal
-def holamundo(): #Funcion que retorna un mensaje de bienvenida
-    return 'Bienvenido a Flask PRACTICAS DE PROFESIONALIZACION'
+def inicio(): #Funcion que retorna un mensaje de bienvenida
+    return render_template('index.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/registro')
+def registro():
+    return render_template('registro.html')
+
+""" 
 @app.route('/home')
 def home():
-    return 'Pagina principal, bienvenido!'
+    return 'Pagina principal, bienvenido!' """
 
 @app.route('/parametros/<nombre>') #Ruta de parametros
 def parametros(nombre):
@@ -46,9 +55,9 @@ def index():
     return render_template('index.html')
 
 #Metodo GET
-@app.route('/registro', methods=['GET']) #Ruta para renderizar una plantilla HTML
+""" @app.route('/registro', methods=['GET']) #Ruta para renderizar una plantilla HTML
 def registro():
-    user = {
+    user = { # Diccionario para almacenar la información del usuario
         'name': '',
         'email': '',
         'mensaje': ''
@@ -57,7 +66,7 @@ def registro():
         user['name'] = request.args.get('nombre', '')
         user['email'] = request.args.get('email', '')
         user['mensaje'] = request.args.get('mensaje', '')
-    return render_template('contactoget.html', usuario=user)
+    return render_template('contactoget.html', usuario=user) """
 
  #Metodo POST
 @app.route('/registro1', methods=['GET', 'POST']) #Ruta para renderizar una plantilla HTML
@@ -82,8 +91,8 @@ def contacto():
         nombre = request.form.get('nombre')
         email = request.form.get('email')
         mensaje = request.form.get('mensaje')
-        #pprint(request.form)
-        #pprint(f'Nombre: {nombre}, Email: {email}, Mensaje: {mensaje}')
+        pprint(request.form)
+        pprint(f'Nombre: {nombre}, Email: {email}, Mensaje: {mensaje}')
         return 'Mensaje enviado!.'
     else:
         return render_template('contacto.html')

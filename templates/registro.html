@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block body %}
+
+<!------------------------------------- Main Container -------------------------->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <!----------------------- Login Container -------------------------->
+    <div class="row border rounded-5 p-3 shadow box-area bg-success bg-opacity-25">
+        <!--------------------------- Left Box ----------------------------->
+        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+            style="background: #1f56fa;">
+           <!--  background: radial-gradient(circle, #0040ff 0%, #92d1fe 100%); -->
+            <div class="featured-image mb-3">
+                <img src="{{ url_for('static', filename='img/2.png') }}" class="img-fluid" style="width: 200px;">
+            </div>
+            <div class="text-white">
+                <h1>¡Bienvenido!</h1>
+            </div>
+            <small class="text-white text-wrap text-center"
+                style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Ingresar informacion de
+                registro</small>
+            <div class="p-4">
+                <a class="btn btn-success text-white" href="{{ url_for('login') }}">Iniciar Sesión</a>
+            </div>
+        </div>
+
+        <!-------------------- ------ Right Box ---------------------------->
+        <div class="col-md-6 right-box">
+            <div class="row align-items-center">
+                <div class="header-text text-center mb-4">
+                    <h2>Bienvenidos</h2>
+
+                    <div class="input-group mb-2">
+                        <button class="btn btn-lg btn-light w-100 fs-6"><img
+                                src="{{url_for('static', filename='img/google.png')}}" style="width:20px"
+                                class="me-2"><small>Iniciar sesión con Google</small></button>
+                    </div>
+                    <p>o Usar tu email para registrarse</p>
+                </div>
+                <form action="" class="" method="post">
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="name" id="email"
+                            placeholder="" required>
+                        <label for="name" class="form-label">Nombre completo</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="email" class="form-control form-control-lg bg-light fs-6" name="email" id="email"
+                            placeholder="" required>
+                        <label for="email" class="form-label">Correo electrónico</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="password" name="password" class="form-control form-control-lg bg-light fs-6"
+                            placeholder="Contraseña">
+                        <label for="password" class="form-label">Contraseña</label>
+                    </div>
+                    <div class="mb-2">
+                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

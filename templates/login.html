@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block body %}
+<!----------------------- Main Container -------------------------->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <!----------------------- Login Container -------------------------->
+    <div class="row border rounded-5 p-3 shadow box-area bg-success bg-opacity-25">
+        <!--------------------------- Left Box ----------------------------->
+        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+            style="background: #1f56fa;">
+            <div class="featured-image mb-3">
+                <img src="{{ url_for('static', filename='img/2.png') }}" class="img-fluid" style="width: 200px;">
+            </div>
+            <div class="text-white">
+                <h3>¡Bienvenido Nuevamente!</h3>
+            </div>
+            <small class="text-white text-wrap text-center"
+                style="width: 20rem;font-family: 'Courier New', Courier, monospace;">Si aun no tienes una cuenta por
+                favor registrese aquí</small>
+            <div class="p-4">
+                <a class="btn btn-success text-white" href="{{ url_for('registro') }}">Registrarse</a>
+            </div>
+        </div>
+
+        <!-------------------- ------ Right Box ---------------------------->
+        <div class="col-md-6 right-box">
+            <div class="row align-items-center">
+                <div class="header-text text-center mb-2">
+                    <h2>Iniciar Sesión</h2>
+                    <div class="input-group mb-2">
+                        <button class="btn btn-lg btn-light w-100 fs-6"><img
+                                src="{{ url_for('static', filename='img/google.png') }}" style="width:20px"
+                                class="me-2"><small>Iniciar sesión con Google</small></button>
+                    </div>
+                    <p>o Iniciar Sesión con una cuenta</p>
+                </div>
+                <form action="" class="" method="post">
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="email" id="email"
+                            placeholder="" required>
+                        <label for="email" class="form-label">Correo electrónico</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="password" name="password" class="form-control form-control-lg bg-light fs-6"
+                            placeholder="Password">
+                        <label for="password" class="form-label">Password</label>
+                    </div>
+                    <div class="p-4 mb-2">
+                        <button type="submit" class="btn btn-lg btn-success w-100 fs-6"
+                            style="background: linear-gradient(190deg, #f1eeda,#7a9f7a,#355e3b);">Iniciar Sesión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
