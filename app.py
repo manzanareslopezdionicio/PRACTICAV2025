@@ -59,6 +59,19 @@ def accesologin():
         else:
             return render_template('login.html', error='Usuario y contraseña incorrectos')
 
+#REGISTRO DE USUARIOS
+@app.route('/crearusuario', methods=['GET', 'POST'])
+def crearusuario():
+        nombre = request.form['nombre']
+        email = request.form['email']
+        password = request.form['password']
+        
+        cursor = mysql.connection.cursor()
+        cursor.execute("INSERT INTO usuario (nombre, email, password, id_rol) VALUES (%s, %s, %s, '2')", (nombre, email, password))
+        mysql.connection.commit()
+        cursor.close()
+        #return redirect(url_for('login'))
+        return render_template('login.html', error='Usuario Registrado Exitosamente')
 
 """ 
 @app.route('/home')

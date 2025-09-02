@@ -37,9 +37,9 @@
                     </div>
                     <p>o Usar tu email para registrarse</p>
                 </div>
-                <form action="" class="" method="post">
+                <form action="/crearusuario" class="" method="post">
                     <div class="form-floating mb-2">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="name" id="email"
+                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="nombre" id="email"
                             placeholder="" required>
                         <label for="name" class="form-label">Nombre completo</label>
                     </div>
@@ -56,6 +56,11 @@
                     <div class="mb-2">
                         <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Registrarse</button>
                     </div>
+                    {% if error %}
+                    <div class="alert alert-primary" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
                 </form>
             </div>
         </div>
