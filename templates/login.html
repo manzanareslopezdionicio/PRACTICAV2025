@@ -34,7 +34,8 @@
                     </div>
                     <p>o Iniciar Sesión con una cuenta</p>
                 </div>
-                <form action="" class="" method="post">
+                <form action="/accesologin" class="form-control" method="post">
+
                     <div class="form-floating mb-2">
                         <input type="text" class="form-control form-control-lg bg-light fs-6" name="email" id="email"
                             placeholder="" required>
@@ -47,8 +48,14 @@
                     </div>
                     <div class="p-4 mb-2">
                         <button type="submit" class="btn btn-lg btn-success w-100 fs-6"
-                            style="background: linear-gradient(190deg, #f1eeda,#7a9f7a,#355e3b);">Iniciar Sesión</button>
+                            style="background: linear-gradient(190deg, #f1eeda,#7a9f7a,#355e3b);">Iniciar
+                            Sesión</button>
                     </div>
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
                 </form>
             </div>
         </div>
