@@ -85,7 +85,7 @@ def listarusuarios():
     cursor.execute(sql)
     usuarios = cursor.fetchall()
     conexion.commit()
-    cursor.close()
+    
     return render_template('admin.html', usuarios=usuarios)
 
 @app.route('/logout')
