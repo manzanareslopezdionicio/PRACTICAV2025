@@ -9,7 +9,7 @@
         <!--------------------------- Left Box ----------------------------->
         <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
             style="background: #1f56fa;">
-           <!--  background: radial-gradient(circle, #0040ff 0%, #92d1fe 100%); -->
+            <!--  background: radial-gradient(circle, #0040ff 0%, #92d1fe 100%); -->
             <div class="featured-image mb-3">
                 <img src="{{ url_for('static', filename='img/2.png') }}" class="img-fluid" style="width: 200px;">
             </div>
@@ -38,6 +38,17 @@
                     <p>o Usar tu email para registrarse</p>
                 </div>
                 <form action="/crearusuario" class="" method="post">
+                    {% if error1 %}
+                    <div class="alert alert-primary" role="alert">
+                        {{ error1 }}
+                    </div>
+                    {% endif %}
+                    
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
                     <div class="form-floating mb-2">
                         <input type="text" class="form-control form-control-lg bg-light fs-6" name="nombre" id="email"
                             placeholder="" required>
@@ -56,11 +67,8 @@
                     <div class="mb-2">
                         <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Registrarse</button>
                     </div>
-                    {% if error %}
-                    <div class="alert alert-primary" role="alert">
-                        {{ error }}
-                    </div>
-                    {% endif %}
+                    
+                    
                 </form>
             </div>
         </div>

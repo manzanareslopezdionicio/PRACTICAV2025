@@ -32,7 +32,8 @@ def registro():
 
 @app.route('/admin')
 def admin  ():
-    return render_template('admin.html')
+    usuario = session.get('usuario')
+    return render_template('admin.html', usuario=usuario)
 
 # FUNCION DE ACCESO A LOGIN
 @app.route('/accesologin', methods=['GET', 'POST'])
@@ -71,7 +72,12 @@ def crearusuario():
         mysql.connection.commit()
         cursor.close()
         #return redirect(url_for('login'))
-        return render_template('login.html', error='Usuario Registrado Exitosamente')
+        return render_template('registro.html', error1='Usuario Registrado Exitosamente')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('inicio'))
 
 """ 
 @app.route('/home')
