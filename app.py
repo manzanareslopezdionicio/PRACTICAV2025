@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Response, session
+from flask import Flask, render_template, request, redirect, url_for, Response, session, flash
 from flask_mysqldb import MySQL
 from pprint import pprint
 

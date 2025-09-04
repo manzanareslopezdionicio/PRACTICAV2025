@@ -5,37 +5,87 @@
 {% block body %}
 
 {% if usuarios %}
+<div class="container p-5">
+    <!-- agregar un nuevo usuario -->
+    <br>
+    <div class="card">
+        <div class="card-body shadow-lg rounded" style="background: linear-gradient(220deg, #ffffff,#7a9f7a,#355e3b);">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-success float-end" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Agregar Usuario
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered"> <!--Centrar el formulario-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: linear-gradient(220deg, #ffffff,#7a9f7a,#355e3b);">
+                            <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Registro de Usuarios</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" >
+                            <form action="" method="post">
+                                <div class=" form-floating mb-2">
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        aria-describedby="helpId" placeholder="Nombres" required />
+                                    <label for="nombre" class="form-label">Nombres</label>
+                                </div>
+                                <div class=" form-floating mb-2">
+                                    <input type="text" class="form-control" name="email" id="email"
+                                        aria-describedby="helpId" placeholder="Correo Electronico" required />
+                                    <label for="email" class="form-label">Correo Electronico</label>
+                                </div>
+                                <div class=" form-floating mb-2">
+                                    <input type="text" class="form-control" name="phone" id="phone"
+                                        aria-describedby="helpId" placeholder="Telefono" required />
+                                    <label for="phone" class="form-label">Telefono</label>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-<h1 class="text-center t">Lista de Usuarios</h1>
-<div class="caja">
-    <table class="table table-striped">
-        <thead class="table-dark ">
-            <tr>
-                <th scope="col">Nº</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Password</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for mostrar in usuarios %}
-            <tr>
-                <th scope="row"> {{loop.index}}</th>
-                <td> {{mostrar.nombre}} </td>
-                <td> {{mostrar.email}} </td>
-                <td>{{mostrar.password}}</td>
-                <td>
-                    <a href="/edit/{{mostrar['id']}}" type="button" class="btn btn-success btn-sm">Editar</a>
-                    <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrar/{{mostrar.id}}')"
-                        class="btn btn-danger btn-sm">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-    <p>no hay datos</p>
-    {% endif %}
+        </div>
+    </div>
+
+    <!-- Tabla de Usuarios -->
+    <h1 class="text-center t">Lista de Usuarios</h1>
+    <div class="caja">
+        <table class="table table-striped">
+            <thead class="table-dark ">
+                <tr>
+                    <th scope="col">Nº</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mostrar in usuarios %}
+                <tr>
+                    <th scope="row"> {{loop.index}}</th>
+                    <td> {{mostrar.nombre}} </td>
+                    <td> {{mostrar.email}} </td>
+                    <td>{{mostrar.password}}</td>
+                    <td>
+                        <a href="/edit/{{mostrar['id']}}" type="button" class="btn btn-success btn-sm">Editar</a>
+                        <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrar/{{mostrar.id}}')"
+                            class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>no hay datos</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
