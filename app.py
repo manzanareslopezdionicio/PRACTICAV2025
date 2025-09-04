@@ -33,7 +33,7 @@ def registro():
 @app.route('/admin')
 def admin():
     usuario = session.get('usuario')
-    return render_template('admin.html', usuario=usuario)
+    return render_template('admin.html')
 
 # FUNCION DE ACCESO A LOGIN
 @app.route('/accesologin', methods=['GET', 'POST'])
@@ -53,10 +53,9 @@ def accesologin():
             
             session['id_rol'] = user['id_rol']
             if user['id_rol'] == 1:
-                return render_template('admin.html')
+                return render_template('admin.html', user=user)
             elif user['id_rol'] == 2:
                 return render_template('usuario.html')
-
         else:
             return render_template('login.html', error='Usuario y contraseña incorrectos')
 
@@ -74,19 +73,14 @@ def crearusuario():
         #return redirect(url_for('login'))
         return render_template('registro.html', error1='Usuario Registrado Exitosamente')
 
-#LISTAR LOS USUARIOS
-@app.route('/listarusuarios')
-def listarusuarios():
-    
-    sql = "SELECT * FROM usuario"
-
-    conexion = mysql.connection
-    cursor = conexion.cursor()
-    cursor.execute(sql)
-    usuarios = cursor.fetchall()
-    conexion.commit()
-    
-    return render_template('admin.html', usuarios=usuarios)
+#-----LISTAR USUARIOS-------------
+@app.route('/listar')
+def listar(): 
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM usuario")
+    usuarios = cur.fetchall()
+    cur.close()
+    return render_template("listar.html", usuarios=usuarios)
 
 @app.route('/logout')
 def logout():
