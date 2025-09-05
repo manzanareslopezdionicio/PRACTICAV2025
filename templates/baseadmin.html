@@ -28,13 +28,17 @@
               <a class="nav-link active" aria-current="page" href="{{ url_for('admin') }}"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('admin') }}">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('listar') }}"></a>
+              <a class="nav-link" href="{{ url_for('listar') }}">Inicio</a>
             </li>
           </ul>
-          <a class="btn btn-outline-success" href="{{ url_for('logout') }}">SALIR</a>
+            {% if session['nombre'] %}
+            <span class="navbar-text text-light ms-2">
+              Bienvenido: 
+              {{ session['nombre'] }}
+            </span>
+          {% endif %}
+          <a class="btn btn-outline-success"  href="{{ url_for('logout') }}">SALIR</a>
+        
         </div>
       </div>
     </nav>

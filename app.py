@@ -32,8 +32,8 @@ def registro():
 
 @app.route('/admin')
 def admin():
-    usuario = session.get('usuario')
-    return render_template('admin.html')
+    usuario = session.get('id')
+    return render_template('admin.html', usuario=usuario)
 
 # FUNCION DE ACCESO A LOGIN
 @app.route('/accesologin', methods=['GET', 'POST'])
@@ -44,14 +44,17 @@ def accesologin():
         
         # Aquí puedes agregar la lógica para verificar las credenciales del usuario
         cursor = mysql.connection.cursor()
+        
+        # Verificar las credenciales del usuario
         cursor.execute("SELECT * FROM usuario WHERE email = %s AND password = %s", (email, password))
         user = cursor.fetchone()
-        cursor.close()
+        cursor.close()  
         if user:
             session['logueado'] = True
             session['id'] = user['id']
-            
+            session['nombre'] = user['nombre']
             session['id_rol'] = user['id_rol']
+            
             if user['id_rol'] == 1:
                 return render_template('admin.html', user=user)
             elif user['id_rol'] == 2:
@@ -72,6 +75,23 @@ def crearusuario():
         cursor.close()
         #return redirect(url_for('login'))
         return render_template('registro.html', error1='Usuario Registrado Exitosamente')
+
+#INSERTAR DATOS A LA BASE DE DATOS
+@app.route('/guardar', methods=['POST'])
+def guardar():
+    if request.method == "POST":
+        nombre = request.form['nombre']
+        email = request.form['email']
+        password = request.form['password']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO usuario(nombre,email,password) VALUES(%s, %s, %s, '2')", (nombre, email, password))
+        mysql.connection.commit()
+        #flash('Agregado satisfactoriamente', 'success') # MENSAJE DE ALERTA
+        cur.close()
+        return redirect(url_for('listar'))
+
+
 
 #-----LISTAR USUARIOS-------------
 @app.route('/listar')

@@ -25,11 +25,11 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" >
-                            <form action="" method="post">
+                            <form action="{{ url_for('guardar') }}" method="POST">
                                 <div class=" form-floating mb-2">
-                                    <input type="text" class="form-control" name="name" id="name"
-                                        aria-describedby="helpId" placeholder="Nombres" required />
-                                    <label for="nombre" class="form-label">Nombres</label>
+                                    <input type="text" class="form-control" name="nombre" id="name"
+                                        aria-describedby="helpId" placeholder="Nombre Completo" required />
+                                    <label for="nombre" class="form-label">Nombre Completo</label>
                                 </div>
                                 <div class=" form-floating mb-2">
                                     <input type="text" class="form-control" name="email" id="email"
@@ -37,13 +37,13 @@
                                     <label for="email" class="form-label">Correo Electronico</label>
                                 </div>
                                 <div class=" form-floating mb-2">
-                                    <input type="text" class="form-control" name="phone" id="phone"
-                                        aria-describedby="helpId" placeholder="Telefono" required />
-                                    <label for="phone" class="form-label">Telefono</label>
+                                    <input type="text" class="form-control" name="password" id="password"
+                                        aria-describedby="helpId" placeholder="Contraseña" required />
+                                    <label for="password" class="form-label">Contraseña</label>
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                         </form>
