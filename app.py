@@ -91,8 +91,6 @@ def guardar():
         cur.close()
         return redirect(url_for('listar'))
 
-
-
 #-----LISTAR USUARIOS-------------
 @app.route('/listar')
 def listar(): 
@@ -101,6 +99,7 @@ def listar():
     usuarios = cur.fetchall()
     cur.close()
     return render_template("listar.html", usuarios=usuarios)
+
 
 @app.route('/logout')
 def logout():
