@@ -102,6 +102,25 @@ def listar():
     cur.close()
     return render_template("listar.html", usuarios=usuarios)
 
+#-----LISTAR PRODUCTOS-------------
+app.route('/listar_productos')
+def listar_productos():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM producto")
+    productos = cur.fetchall()
+    cur.close()
+    return render_template("listarproducto.html", productos=productos)
+
+#-----ELIMINAR PRODUCTOS-------------
+@app.route('/eliminar_producto/<id>')
+def eliminar_producto(id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM producto WHERE id = %s", (id,))
+    mysql.connection.commit()
+    cur.close()
+    flash('Producto eliminado exitosamente', 'success')
+    return redirect(url_for('listar_productos'))
+
 
 @app.route('/logout')
 def logout():
