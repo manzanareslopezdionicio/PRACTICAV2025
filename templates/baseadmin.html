@@ -10,6 +10,10 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <!-- SweetAlert2 -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- iconos de bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body class="bg-success bg-opacity-10">
@@ -29,12 +33,8 @@
               <a class="nav-link active" aria-current="page" href="{{ url_for('admin') }}"></a>
             </li>
             <li class="nav-item">
-<<<<<<< Updated upstream
-              <a class="nav-link" href="{{ url_for('listar') }}">Inicio</a>
-=======
               <a class="nav-link" href="{{ url_for('admin') }}">Inicio</a>
             </li>
-
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -43,9 +43,7 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Agregar</a></li>
                 <li><a class="dropdown-item" href="#">Listar</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
+
                 <li><a class="dropdown-item" href="#"></a></li>
               </ul>
             </li>
@@ -55,17 +53,17 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('listar') }}"></a>
->>>>>>> Stashed changes
+
             </li>
           </ul>
-            {% if session['nombre'] %}
+          <!--             {% if session['nombre'] %}
             <span class="navbar-text text-light ms-2">
               Bienvenido: 
               {{ session['nombre'] }}
             </span>
-          {% endif %}
-          <a class="btn btn-outline-success"  href="{{ url_for('logout') }}">SALIR</a>
-        
+          {% endif %} -->
+          <a class="btn btn-outline-success" href="{{ url_for('logout') }}">SALIR</a>
+
         </div>
       </div>
     </nav>
