@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Response, session, flash
+from flask import Flask, render_template, request, redirect, url_for, Response, session
 from flask_mysqldb import MySQL
 from pprint import pprint
 
@@ -77,7 +77,7 @@ def crearusuario():
         return render_template('registro.html', error1='Usuario Registrado Exitosamente')
 
 #INSERTAR DATOS A LA BASE DE DATOS
-@app.route('/guardar', methods=['POST'])
+@app.route('/guardar', methods=['Get','POST'])
 def guardar():
     if request.method == "POST":
         nombre = request.form['nombre']
@@ -85,7 +85,7 @@ def guardar():
         password = request.form['password']
         
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO usuario(nombre,email,password) VALUES(%s, %s, %s, '2')", (nombre, email, password))
+        cur.execute("INSERT INTO usuario(nombre,email,password, id_rol) VALUES(%s, %s, %s, '2')", (nombre, email, password))
         mysql.connection.commit()
         #flash('Agregado satisfactoriamente', 'success') # MENSAJE DE ALERTA
         cur.close()
