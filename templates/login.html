@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock %}
 {% block body %}
+
+<!--MENSAJE DE ALERTA FLASH-->
+<!-- Mostrar mensajes flash -->
+{% with msg = get_flashed_messages(with_categories=True) %}
+<!-- validando si hay mensajes flash -->
+{% if msg %}
+<!-- Recorrer los mensajes flash, mas la categoria al cual pertenecen 
+{% for category, message in msg %}
+<div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+    <strong>{{ message }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+-->
+
 <!----------------------- Main Container -------------------------->
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <!----------------------- Login Container -------------------------->
@@ -51,12 +68,12 @@
                             style="background: linear-gradient(190deg, #f1eeda,#7a9f7a,#355e3b);">Iniciar
                             Sesión</button>
                     </div>
-                    <!-- Mensaje de error -->
+                    <!--  Mensaje de error-->
                     {% if error %}
                     <div class="alert alert-danger" role="alert">
                         {{ error }}
                     </div>
-                    {% endif %}
+                    {% endif %} 
                 </form>
             </div>
         </div>

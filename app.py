@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Response, session
+from flask import Flask, render_template, request, redirect, url_for, Response, session, flash
 from flask_mysqldb import MySQL
 from pprint import pprint
 
@@ -37,7 +37,7 @@ def admin():
 
 # FUNCION DE ACCESO A LOGIN
 @app.route('/accesologin', methods=['GET', 'POST'])
-def accesologin():
+def accesologin(): 
     if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
         email = request.form['email']
         password = request.form['password']
@@ -56,10 +56,12 @@ def accesologin():
             session['id_rol'] = user['id_rol']
             
             if user['id_rol'] == 1:
+                flash('¡Bienvenido Administrador!', 'success')
                 return render_template('admin.html', user=user)
             elif user['id_rol'] == 2:
                 return render_template('usuario.html')
         else:
+            flash('Usuario y contraseña incorrectos', 'danger')
             return render_template('login.html', error='Usuario y contraseña incorrectos')
 
 #REGISTRO DE USUARIOS
@@ -87,7 +89,7 @@ def guardar():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO usuario(nombre,email,password, id_rol) VALUES(%s, %s, %s, '2')", (nombre, email, password))
         mysql.connection.commit()
-        #flash('Agregado satisfactoriamente', 'success') # MENSAJE DE ALERTA
+        flash('Agregado satisfactoriamente', 'success') # MENSAJE DE ALERTA
         cur.close()
         return redirect(url_for('listar'))
 
