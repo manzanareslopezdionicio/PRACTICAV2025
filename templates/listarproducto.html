@@ -3,26 +3,33 @@
 
 {% block body %}
 <h1 class="text-center">Lista de Productos</h1>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for Productos in productos %}
-        <tr>
-            <td>{{ Productos.id }}</td>
-            <td>{{ Productos.nombre }}</td>
-            <td>{{ Productos.precio }}</td>
-            <td>
-                <a href="{{ url_for('editar_producto', id=Productos.id) }}">Editar</a>
-                <a href="{{ url_for('eliminar_producto', id=Productos.id) }}">Eliminar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+
+<div class="container p-5 mt-3">
+    <!-- agregar un nuevo producto -->
+    <h2 class="text-center alert alert-danger py-4">Lista de Producto</h2>
+
+    <table class="table table-bordered table-responsive table-striped">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Productos in productos %}
+            <tr>
+                <td>{{ Productos.id }}</td>
+                <td>{{ Productos.nombre }}</td>
+                <td>{{ Productos.precio }}</td>
+                <td>
+                    <a href="{{ url_for('editar_producto', id=Productos.id) }}">Editar</a>
+                    <a href="{{ url_for('eliminar_producto', id=Productos.id) }}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -112,15 +112,6 @@ def listar_productos():
     return render_template("listarproducto.html", productos=productos)
 
 #-----ELIMINAR PRODUCTOS-------------
-@app.route('/eliminar_producto/<id>')
-def eliminar_producto(id):
-    cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM producto WHERE id = %s", (id,))
-    mysql.connection.commit()
-    cur.close()
-    flash('Producto eliminado exitosamente', 'success')
-    return redirect(url_for('listar_productos'))
-
 
 @app.route('/logout')
 def logout():
@@ -135,7 +126,13 @@ def acerca():
 def contacto():
     return render_template('contacto.html')
 
+@app.route('/listarproducto')
+def listarproducto():
+    return render_template('listarproducto.html')
 
+@app.route('/agregarproducto')
+def agregarproducto():
+    return render_template('agregarproducto.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

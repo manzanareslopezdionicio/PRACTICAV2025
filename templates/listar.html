@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
 <!--MENSAJE DE ALERTA SweetAlert2-->
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
@@ -34,7 +33,7 @@
 
 
 {% if usuarios %}
-<div class="container p-5">
+<div class="container p-5 mt-3">
     <!-- agregar un nuevo usuario -->
     <br>
     <div class="card">

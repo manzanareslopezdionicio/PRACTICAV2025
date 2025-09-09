@@ -10,7 +10,7 @@
 <ul class=flashes>
     {% for category, message in messages %}
     <script type="text/javascript">
-        
+
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -26,7 +26,7 @@
             icon: "success",
             title: "{{message}}"
         });
-        
+
     </script>
     {% endfor %}
 </ul>
@@ -54,15 +54,17 @@
 </script>
 
 <div class="container p-5 mt-3">
-    <h2 class=" text-center alert alert-danger py-4">Registro de Clientes</h2>
+    <h2 class=" text-center alert alert-danger py-4">Sistema de Gestión de Productos</h2>
     <div class="row">
         <div class="row text-center">
             <div class="col-sm-4 mb-3 mb-sm-0">
                 <div class="card" style="background: linear-gradient(180deg, #355e3b, #7a9f7a, #f1eeda);">
-                    <div class="card-body text-white">
-                        <h5 class="card-title">Perfil del Usuario</h5>
-                        <p class="card-text">Mostrar los datos de registro del usuario</p>
-                        <a href="{{ url_for('listar')}}" class="btn btn-outline-success">Ver Detalles</a>
+                    <div class="card-body">
+                        <div class="card-body text-white">
+                            <h5 class="card-title">Perfil del Usuario</h5>
+                            <p class="card-text">Mostrar registro de usuarios</p>
+                            <a href="{{ url_for('listar')}}" class="btn btn-outline-success">Ver Detalles</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,7 +74,7 @@
                         <div class="card-body text-white">
                             <h5 class="card-title">Registro de Productos</h5>
                             <p class="card-text">Agregar los productos al sistema</p>
-                            <a href="#" class="btn btn-outline-success">Ver Detalles</a>
+                            <a href="{{ url_for('agregarproducto') }}" class="btn btn-outline-success">Ver Detalles</a>
                         </div>
                     </div>
                 </div>
@@ -81,14 +83,13 @@
                 <div class="card" style="background: linear-gradient(180deg, #0b235c,#3d85a9,#e0f7ff);">
                     <div class="card-body">
                         <div class="card-body text-white">
-                            <h5 class="card-title">visualizar Productos</h5>
-                            <p class="card-text">Visualizar de registro de productos</p>
-                            <a href="#" class="btn btn-outline-success">Ver Detalles</a>
+                            <h5 class="card-title">Visualizar Productos</h5>
+                            <p class="card-text">Muestra lista de productos</p>
+                            <a href="{{ url_for('listarproducto') }}" class="btn btn-outline-success">Ver Detalles</a>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
