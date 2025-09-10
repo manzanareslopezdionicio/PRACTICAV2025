@@ -7,7 +7,7 @@
 {% with msg = get_flashed_messages(with_categories=True) %}
 <!-- validando si hay mensajes flash -->
 {% if msg %}
-<!-- Recorrer los mensajes flash, mas la categoria al cual pertenecen 
+<!-- Recorrer los mensajes flash, mas la categoria al cual pertenecen -->
 {% for category, message in msg %}
 <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
     <strong>{{ message }}</strong>
@@ -16,7 +16,7 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
--->
+
 
 <!----------------------- Main Container -------------------------->
 <div class="container d-flex justify-content-center align-items-center min-vh-100">

@@ -117,12 +117,14 @@ def agregar_producto():
     if request.method == 'POST':
         nombre = request.form['nombre']
         precio = request.form['precio']
+        descripcion = request.form['descripcion']
+        
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO producto (nombre, precio) VALUES (%s, %s)", (nombre, precio))
+        cur.execute("INSERT INTO productos (nombre, descripcion, precio) VALUES (%s, %s, %s)", (nombre, descripcion, precio))
         mysql.connection.commit()
         cur.close()
         flash('Producto agregado exitosamente', 'success')
-        return redirect(url_for('listar_productos'))
+        #return redirect(url_for('listar_productos'))
     return render_template('agregarproducto.html')
 
 #-----ELIMINAR PRODUCTOS-------------
