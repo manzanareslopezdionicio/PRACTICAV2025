@@ -10,7 +10,7 @@
     <!-- agregar un nuevo producto -->
     <h2 class="text-center alert alert-danger py-4">Lista de Producto</h2>
 
-    <table class="table table-bordered table-responsive table-striped">
+    <table id="tablaProductos" class="table table-bordered table-responsive table-striped">
         <thead class="table-dark">
             <tr class="text-center">
                 <th>ID</th>
@@ -37,19 +37,23 @@
 <!-- DataTables JS -->
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 <script>
-    $(document).ready(function () {
-        $('#tabla-productos').DataTable({
+    $(document).ready(function() {
+        $('#tablaProductos').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+            },
             "pageLength": 10,
             "lengthMenu": [10, 25, 50],
             "order": [[1, "asc"]],
             "columnDefs": [
                 { "targets": [0, 2, 3], "orderable": false }
-            ],
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
-            }
+            ]
+
         });
     });
 </script>
+
+
 {% endblock %}
