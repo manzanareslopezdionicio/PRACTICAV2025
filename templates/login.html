@@ -23,20 +23,11 @@
 <ul class=flashes>
     {% for category, message in messages %}
     <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
+        Swal.fire({
+            icon: "{{ 'error' if category == 'danger' else 'success' }}",
+            title: "{{ message }}",
             timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-            }
-        });
-        Toast.fire({
-            icon: "success",
-            title: "{{message}}"
+            showConfirmButton: false
         });
     </script>
     {% endfor %}
@@ -95,7 +86,7 @@
                             Sesión</button>
                     </div>
                     <!--  Mensaje de error-->
-<!--                     {% if error %}
+                    <!--                     {% if error %}
                     <div class="alert alert-danger" role="alert">
                         {{ error }}
                     </div>
