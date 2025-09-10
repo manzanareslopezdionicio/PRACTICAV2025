@@ -2,13 +2,15 @@
 {% block title %}Lista de Productos{% endblock %}
 
 {% block body %}
-<h1 class="text-center">Lista de Productos</h1>
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
+<h1 class="text-center">Lista de Productos</h1>
 <div class="container p-5 mt-3">
     <!-- agregar un nuevo producto -->
     <h2 class="text-center alert alert-danger py-4">Lista de Producto</h2>
 
-    <table class="table table-bordered table-responsive table-striped">
+    <table id="tabla-productos" class="table table-bordered table-responsive table-striped">
         <thead class="table-dark">
             <tr class="text-center">
                 <th>ID</th>
@@ -32,4 +34,16 @@
         </tbody>
     </table>
 </div>
+<!-- DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tabla-productos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            }
+        });
+    });
+</script>
 {% endblock %}
