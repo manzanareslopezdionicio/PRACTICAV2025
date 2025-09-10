@@ -62,7 +62,8 @@ def accesologin():
                 return render_template('usuario.html')
         else:
             flash('Usuario y contraseña incorrectos', 'danger')
-            return render_template('login.html', error='Usuario y contraseña incorrectos')
+            return render_template('login.html')
+        flash('Usuario y contraseña incorrectos', 'danger')
 
 #REGISTRO DE USUARIOS
 @app.route('/crearusuario', methods=['GET', 'POST'])

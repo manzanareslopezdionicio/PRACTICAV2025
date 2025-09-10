@@ -3,20 +3,46 @@
 {% block body %}
 
 <!--MENSAJE DE ALERTA FLASH-->
-<!-- Mostrar mensajes flash -->
+<!-- Mostrar mensajes flash 
 {% with msg = get_flashed_messages(with_categories=True) %}
-<!-- validando si hay mensajes flash -->
-{% if msg %}
+ validando si hay mensajes flash
+{% if msg %}-->
 <!-- Recorrer los mensajes flash, mas la categoria al cual pertenecen -->
-{% for category, message in msg %}
+<!-- {% for category, message in msg %}
 <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
     <strong>{{ message }}</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endfor %}
 {% endif %}
-{% endwith %}
+{% endwith %} -->
 
+<!-- MENSAJE DE ALERTA SweeAlert2 -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+    {% for category, message in messages %}
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: "success",
+            title: "{{message}}"
+        });
+    </script>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
 
 <!----------------------- Main Container -------------------------->
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
@@ -69,11 +95,11 @@
                             Sesión</button>
                     </div>
                     <!--  Mensaje de error-->
-           <!--          {% if error %}
+<!--                     {% if error %}
                     <div class="alert alert-danger" role="alert">
                         {{ error }}
                     </div>
-                    {% endif %} --> 
+                    {% endif %} -->
 
 
 
