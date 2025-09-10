@@ -59,61 +59,65 @@
         <div class="row text-center">
             <div class="col-sm-4 mb-3 mb-sm-0">
                 <div class="card" style="background: linear-gradient(180deg, #355e3b, #7a9f7a, #f1eeda);">
-                    <div class="card-body">
-                        <div class="card-body text-white">
-                            <div class="container col-sm-12 text-center">
-                                <i class="bi bi-people-fill"></i>
-
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="card-body text-white">
+                                    <h5 class="card-title">Perfil del Usuario</h5>
+                                    <p class="card-text">Mostrar registro de usuarios</p>
+                                    <a href="{{ url_for('listar')}}" class="btn btn-outline-success">Ver Detalles</a>
+                                </div>
                             </div>
-                            <h5 class="card-title">Perfil del Usuario</h5>
-                            <p class="card-text">Mostrar registro de usuarios</p>
-                            <a href="{{ url_for('listar')}}" class="btn btn-outline-success">Ver Detalles</a>
+                        </div>
+                        <div class="col-md-4 align-content-center">
+                            <img src="{{ url_for('static', filename='img/user.png') }}" class="img-fluid rounded-start"
+                                alt="...">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4 mb-3 mb-sm-0">
                 <div class="card" style="background: linear-gradient(180deg, #042bf1,#367cd9,#ffffff);">
-                    <div class="card-body">
-                        <div class="card-body text-white">
-                            <h5 class="card-title">Registro de Productos</h5>
-                            <p class="card-text">Agregar los productos al sistema</p>
-                            <a href="{{ url_for('agregarproducto') }}" class="btn btn-outline-success">Ver Detalles</a>
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="card-body text-white">
+                                    <h5 class="card-title">Registro de Productos</h5>
+                                    <p class="card-text">Agregar los productos al sistema</p>
+                                    <a href="{{ url_for('agregarproducto') }}" class="btn btn-outline-success">Ver
+                                        Detalles</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 align-content-center">
+                            <a href="{{ url_for('agregarproducto') }}">
+                            <img src="{{ url_for('static', filename='img/agregarp.png') }}"
+                                class="img-fluid rounded-start" alt="..."></a>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-sm-4 mb-3 mb-sm-0">
                 <div class="card" style="background: linear-gradient(180deg, #0b235c,#3d85a9,#e0f7ff);">
-                    <div class="card-body">
-                        <div class="card-body text-white">
-                            <h5 class="card-title">Visualizar Productos</h5>
-                            <p class="card-text">Muestra lista de productos</p>
-                            <a href="{{ url_for('listarproducto') }}" class="btn btn-outline-success">Ver Detalles</a>
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="card-body text-white">
+                                    <h5 class="card-title">Visualizar Productos</h5>
+                                    <p class="card-text">Muestra lista de productos</p>
+                                    <a href="{{ url_for('listarproducto') }}" class="btn btn-outline-success">Ver
+                                        Detalles</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 align-content-center">
+                            <img src="{{ url_for('static', filename='img/listarp.png') }}"
+                                class="img-fluid rounded-start" alt="...">
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Ejemplo de tarjeta adicional -->
-             
-            <div class="card col-4 mb-3">
-                <div class="row g-0">
-
-                    <div class="col-md-8">
-                        <div class="card-body text-white">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                </div>
-            </div>
-
-
         </div>
     </div>
 </div>
