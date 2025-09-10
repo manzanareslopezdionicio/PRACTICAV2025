@@ -67,16 +67,16 @@ def accesologin():
 #REGISTRO DE USUARIOS
 @app.route('/crearusuario', methods=['GET', 'POST'])
 def crearusuario():
-        nombre = request.form['nombre']
-        email = request.form['email']
-        password = request.form['password']
+    nombre = request.form['nombre']
+    email = request.form['email']
+    password = request.form['password']
         
-        cursor = mysql.connection.cursor()
-        cursor.execute("INSERT INTO usuario (nombre, email, password, id_rol) VALUES (%s, %s, %s, '2')", (nombre, email, password))
-        mysql.connection.commit()
-        cursor.close()
-        #return redirect(url_for('login'))
-        return render_template('registro.html', error1='Usuario Registrado Exitosamente')
+    cursor = mysql.connection.cursor()
+    cursor.execute("INSERT INTO usuario (nombre, email, password, id_rol) VALUES (%s, %s, %s, '2')", (nombre, email, password))
+    mysql.connection.commit()
+    cursor.close()
+    #return redirect(url_for('login'))
+    return render_template('registro.html', error1='Usuario Registrado Exitosamente')
 
 #INSERTAR DATOS A LA BASE DE DATOS
 @app.route('/guardar', methods=['Get','POST'])
@@ -106,10 +106,24 @@ def listar():
 app.route('/listar_productos')
 def listar_productos():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM producto")
+    cur.execute("SELECT * FROM productos")
     productos = cur.fetchall()
     cur.close()
     return render_template("listarproducto.html", productos=productos)
+
+#-----AGREGAR PRODUCTOS-------------
+@app.route('/agregar_producto', methods=['GET', 'POST'])
+def agregar_producto():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        precio = request.form['precio']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO producto (nombre, precio) VALUES (%s, %s)", (nombre, precio))
+        mysql.connection.commit()
+        cur.close()
+        flash('Producto agregado exitosamente', 'success')
+        return redirect(url_for('listar_productos'))
+    return render_template('agregarproducto.html')
 
 #-----ELIMINAR PRODUCTOS-------------
 
