@@ -51,7 +51,6 @@
                     <label for="descripcion" class="form-label">Descripción</label>
                     <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
                 </div>
-
                 <button type="submit" class="btn btn-outline-success">Agregar Producto</button>
             </form>
         </div>
@@ -65,24 +64,15 @@
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Descripción</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for producto in productos %}
+                        {% for producto in cur %}
                         <tr>
-                            <td>{{ producto.id }}</td>
+                            <th scope="row">{{ loop.index }}</th>
                             <td>{{ producto.nombre }}</td>
                             <td>{{ producto.precio }}</td>
                             <td>{{ producto.descripcion }}</td>
-                            <td>
-                                <a href="{{ url_for('editar_producto', id=producto.id) }}"
-                                    class="btn btn-warning">Editar</a>
-                                <form action="{{ url_for('eliminar_producto', id=producto.id) }}" method="post"
-                                    style="display:inline;">
-                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                </form>
-                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

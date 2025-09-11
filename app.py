@@ -110,7 +110,7 @@ def listar_productos():
     cur.execute("SELECT * FROM productos")
     productos = cur.fetchall()
     cur.close()
-    return render_template("listarproducto.html", productos=productos)
+    return render_template("listarproductos.html", productos=productos)
 
 #-----AGREGAR PRODUCTOS-------------
 @app.route('/agregar_producto', methods=['GET', 'POST'])

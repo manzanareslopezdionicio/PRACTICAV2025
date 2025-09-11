@@ -16,15 +16,17 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Precio</th>
+                <th>Descripción</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             {% for Productos in productos %}
             <tr>
-                <td>{{ Productos.id }}</td>
+                <th scope="row">{{ loop.index }}</th>
                 <td>{{ Productos.nombre }}</td>
                 <td>{{ Productos.precio }}</td>
+                <td>{{ Productos.descripcion }}</td>
                 <td>
                     <a href="{{ url_for('editar_producto', id=Productos.id) }}">Editar</a>
                     <a href="{{ url_for('eliminar_producto', id=Productos.id) }}">Eliminar</a>
