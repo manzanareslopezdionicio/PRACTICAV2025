@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, Response, session, flash
 from flask_mysqldb import MySQL
-from pprint import pprint
+from functools import wraps #decorador
+
+#from pprint import pprint
 
 app = Flask(__name__) #Creando el objeto aplicacion
-
 app.secret_key = 'appsecretkey' #Clave secreta para la sesion
 
 mysql=MySQL() #Inicializando la extension de MySQL
@@ -18,6 +19,16 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql.init_app(app)
 
+#funcion de decorador acceso a rutas
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'if' not in session:
+            flash('Debes iniciar sesión para acceder.','warning')
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
 @app.route('/') #Decorador Ruta principal
 def inicio(): #Funcion que retorna un mensaje de bienvenida
     return render_template('index.html')
@@ -31,6 +42,7 @@ def registro():
     return render_template('registro.html')
 
 @app.route('/admin')
+#@login_required
 def admin():
     usuario = session.get('id')
     return render_template('admin.html', usuario=usuario)
@@ -96,6 +108,7 @@ def guardar():
 
 #-----LISTAR USUARIOS-------------
 @app.route('/listar')
+#@login_required
 def listar(): 
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM usuario")
