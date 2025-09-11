@@ -104,13 +104,13 @@ def listar():
     return render_template("listar.html", usuarios=usuarios)
 
 #-----LISTAR PRODUCTOS-------------
-app.route('/listar_productos')
+@app.route('/listar_productos')
 def listar_productos():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM productos")
     productos = cur.fetchall()
     cur.close()
-    return render_template("listarproductos.html", productos=productos)
+    return render_template("listarproducto.html", productos=productos)
 
 #-----AGREGAR PRODUCTOS-------------
 @app.route('/agregar_producto', methods=['GET', 'POST'])
@@ -125,10 +125,18 @@ def agregar_producto():
         mysql.connection.commit()
         cur.close()
         flash('Producto agregado exitosamente', 'success')
-        #return redirect(url_for('listar_productos'))
-    return render_template('agregarproducto.html')
+        return redirect(url_for('listar_productos_agregados'))
+        #return render_template('agregarproducto.html')
 
-#-----ELIMINAR PRODUCTOS-------------
+#-----listar productos-------------
+
+@app.route('/listar_productos_agregados')
+def listar_productos_agregados():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM productos")
+    productos = cur.fetchall()
+    cur.close()
+    return render_template("agregarproducto.html", productos=productos)
 
 @app.route('/logout')
 def logout():
@@ -143,9 +151,6 @@ def acerca():
 def contacto():
     return render_template('contacto.html')
 
-@app.route('/listarproducto')
-def listarproducto():
-    return render_template('listarproducto.html')
 
 @app.route('/agregarproducto')
 def agregarproducto():

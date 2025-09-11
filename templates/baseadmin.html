@@ -45,7 +45,7 @@
                 Productos
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url_for('agregarproducto') }}">Agregar</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('listar_productos_agregados') }}">Agregar</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('listar_productos') }}">Listar</a></li>
 
                 <li><a class="dropdown-item" href="#"></a></li>
@@ -60,12 +60,12 @@
 
             </li>
           </ul>
-          <!--{% if session['nombre'] %}
+          {% if session['nombre'] %}
             <span class="navbar-text text-light ms-2">
-              Bienvenido: 
+             <!--  Bienvenido:  -->
               {{ session['nombre'] }}
             </span>
-          {% endif %} -->
+          {% endif %}
           <a class="btn btn-outline-success" href="{{ url_for('logout') }}">SALIR</a>
 
         </div>
