@@ -96,6 +96,28 @@
 
   <!--MENSAJE DE ALERTA SweetAlert2-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.all.min.js"></script>
+  
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const logoutBtn = document.querySelector('a[href="{{ url_for("logout") }}"]');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+          title: '¿Está seguro que desea cerrar el sistema?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, cerrar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = logoutBtn.href;
+          }
+        });
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
