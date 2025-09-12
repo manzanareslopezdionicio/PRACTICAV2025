@@ -1,14 +1,15 @@
-**Instalacion de archivos requeridoas
-Crear el entorno virtual
+##Instalacion de archivos requeridoas
+
+**Crear el entorno virtual**
 python -m venv venv
 
-Crear el archivo.
+**Crear el archivo.**
 pip freeze > requirements.txt
 
-Instalarlo
+**Instalarlo**
 pip install -r requirements.txt
 
-RECURSOS:
+##RECURSOS:
 Python 3.13.5
 
 microframework web
