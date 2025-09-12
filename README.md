@@ -17,3 +17,11 @@ flask
 
 Gestor de base de datos
 MySql
+
+# Vistas principal
+
+# Vista de accesos
+![alt text](image-1.png)
+# Vista dashboard (panel)
+![alt text](image-2.png)
+
