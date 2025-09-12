@@ -2,8 +2,25 @@
 
 {% block title %}Agregar Producto{% endblock %}
 
+
 {% block body %}
 
+<!-- <style>
+/* Estilos por defecto del input */
+.mi-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease; /* Añade una transición suave al cambio de color del borde */
+}
+
+/* Estilos al pasar el mouse sobre el input */
+.mi-input:hover {
+  border-color: blue; /* Cambia el color del borde a azul */
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); /* Añade una sombra sutil */
+}
+</style>
+ -->
 <!--MENSAJE DE ALERTA SweetAlert2-->
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
@@ -38,23 +55,25 @@
     <div class="row">
         <div class="col-sm-4 left-box">
             <h2 class="text-center alert alert-danger py-4">Agregar Producto</h2>
-            <div class="card">
+            <div class="card border-success shadow rounded-4">
                 <div class="card-body">
                     <form action="{{ url_for('agregar_producto') }}" method="post">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre del Producto</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            <input type="text" class="form-control mi-input" id="nombre" name="nombre"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="precio" class="form-label">Precio</label>
-                            <input type="number" class="form-control" id="precio" name="precio" step="0.01" required>
+                            <input type="number" class="form-control border-success" id="precio" name="precio"
+                                step="0.01" required>
                         </div>
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3"
+                            <textarea class="form-control border-success" id="descripcion" name="descripcion" rows="3"
                                 required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-outline-success">Agregar Producto</button>
+                        <button type="submit" class="btn btn-outline-success ">Agregar Producto</button>
                     </form>
 
                 </div>
