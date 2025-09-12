@@ -8,6 +8,6 @@
 
 /* Estilos al pasar el mouse sobre el input */
 .mi-input:hover {
-  border-color: rgb(5, 144, 23); /* Cambia el color del borde a azul */
-  box-shadow: 0 0 10px rgba(0, 255, 51, 0.5); /* Añade una sombra sutil */
+  border-color: rgb(2, 197, 28); /* Cambia el color del borde a azul */
+  box-shadow: 0 0 10px rgb(2, 143, 30); /* Añade una sombra sutil */
 }
