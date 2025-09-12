@@ -142,7 +142,6 @@ def agregar_producto():
         #return render_template('agregarproducto.html')
 
 #-----listar productos-------------
-
 @app.route('/listar_productos_agregados')
 def listar_productos_agregados():
     cur = mysql.connection.cursor()
@@ -150,6 +149,11 @@ def listar_productos_agregados():
     productos = cur.fetchall()
     cur.close()
     return render_template("agregarproducto.html", productos=productos)
+
+# eliminar usuario
+@app.route('/eliminarUser/<int:id>')
+def eliminarUser(id):
+    pass
 
 @app.route('/logout')
 def logout():
