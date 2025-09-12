@@ -1,4 +1,4 @@
-##Instalacion de archivos requeridoas
+## Instalacion de archivos requeridoas
 
 **Crear el entorno virtual**
 python -m venv venv
