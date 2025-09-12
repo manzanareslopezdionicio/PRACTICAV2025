@@ -1,4 +1,4 @@
-##Instalacion de archivos requeridoas
+## Instalacion de archivos requeridoas
 
 **Crear el entorno virtual**
 python -m venv venv
@@ -17,3 +17,5 @@ flask
 
 Gestor de base de datos
 MySql
+# Vista principal
+![alt text](image.png)
