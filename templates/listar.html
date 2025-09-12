@@ -32,6 +32,27 @@
 {% endwith %}
 
 
+<!--MENSAJE DE ALERTA PARA ELIMINACION SweetAlert2-->
+<script>
+    function confirmarEliminacion(url) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    }
+</script>
+
+
 {% if usuarios %}
 <div class="container p-5 mt-3">
     <!-- agregar un nuevo usuario -->
@@ -103,7 +124,7 @@
                     <td> {{mostrar.password}} </td>
                     <td>
                         <a href="/edit/{{mostrar['id']}}" type="button" class="btn btn-success btn-sm">Editar</a>
-                        <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrar/{{mostrar.id}}')"
+                        <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrarUser/{{mostrar.id}}')"
                             class="btn btn-danger btn-sm">Eliminar</a>
                     </td>
                 </tr>

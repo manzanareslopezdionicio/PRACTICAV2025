@@ -151,8 +151,8 @@ def listar_productos_agregados():
     return render_template("agregarproducto.html", productos=productos)
 
 #-------- eliminar usuario -------------
-@app.route('/eliminarUser/<int:id>', metods=['GET'])
-def eliminarUser(id):
+@app.route('/borrarUser/<int:id>', methods=['GET'])
+def borrarUser(id):
     flash('Sea borrado permanentemente', 'question')
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM usuario WHERE id=%s", (id,))
