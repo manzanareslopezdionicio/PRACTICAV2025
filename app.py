@@ -150,10 +150,14 @@ def listar_productos_agregados():
     cur.close()
     return render_template("agregarproducto.html", productos=productos)
 
-# eliminar usuario
-@app.route('/eliminarUser/<int:id>')
+#-------- eliminar usuario -------------
+@app.route('/eliminarUser/<int:id>', metods=['GET'])
 def eliminarUser(id):
-    pass
+    flash('Sea borrado permanentemente', 'question')
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM usuario WHERE id=%s", (id,))
+    mysql.connection.commit()
+    return redirect(url_for('listar'))
 
 @app.route('/logout')
 def logout():
