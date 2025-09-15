@@ -159,6 +159,19 @@ def borrarUser(id):
     mysql.connection.commit()
     return redirect(url_for('listar'))
 
+# --------editar usuario--------------
+@app.route('/editusuario/<int:id>')
+def eliminarusuario(id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM usuario WHERE id=%s", (id,))
+    usuarios = cur.fetchone()
+    mysql.connection.commit()
+    return 
+    
+@app.route('/actualizarusuario/<int:id>', methods='GET')
+def actualizarusuario(id):
+    pass
+
 @app.route('/logout')
 def logout():
     session.clear()
