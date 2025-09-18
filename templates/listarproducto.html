@@ -34,7 +34,6 @@
                 </td>
             </tr>
             <!-- MODAL EDITAR PRODUCTO -->
-
             <!-- Modal Body -->
             <div class="modal fade" id="modaledit{{Productos.id}}" tabindex="-1" data-bs-backdrop="static"
                 data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
@@ -57,17 +56,16 @@
                                     <input type="number" class="form-control border-success" id="precio"
                                         value="{{Productos.precio}}" name="precio" step="0.01" required>
                                 </div>
-                                <div class="mb-3">
-                                    
+                             <!--    <div class="mb-3">
+
                                     <label for="nombre" class="form-label">Nombre del Producto</label>
-                                    <input type="text" class="form-control mi-input" id="nombre"
+                                    <input type="text" class="form-control mi-input" id="no"
                                         value="{{Productos.descripcion}}" name="nombre" required>
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label for="descripcion" class="form-label">Descripción</label>
-                                    <textarea type="text" class="form-control border-success" id="descripcion"
-                                        value="{{Productos.descripcion}}" name="descripcion" rows="3"
-                                        required></textarea>
+                                    <input type="text" class="form-control border-success" id="descripcion"
+                                        value="{{Productos.descripcion}}" name="descripcion" required>
                                 </div>
                         </div>
                         <div class="modal-footer">

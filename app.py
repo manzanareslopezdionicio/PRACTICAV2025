@@ -160,16 +160,6 @@ def borrarUser(id):
     return redirect(url_for('listar'))
 
 
-#EDITAR DATOS DE LA BASE DEATOS
-@app.route('/edit/<int:id>') 
-def edit(id):
-    conexion=mysql.connection
-    cursor=conexion.cursor()
-    cursor.execute("SELECT * FROM usuario WHERE id=%s", (id,))
-    clientes=cursor.fetchone()
-    conexion.commit()
-    return render_template('editar.html')
-
 # --------Actualizar usuario--------------
 @app.route('/updateUsuari', methods = ['POST', 'GET'])
 def updateUsuari():
@@ -208,7 +198,7 @@ def editproducto():
     nombre = request.form['nombre']
     precio = request.form['precio']
     descripcion = request.form['descripcion']
-    sql="UPDATE producto SET nombre=%s, precion=%s, descripcion=%s WHERE id=%s"
+    sql="UPDATE productos SET nombre=%s, precio=%s, descripcion=%s WHERE id=%s"
     datos=(nombre, precio, descripcion, id)
     
     conexion=mysql.connection
@@ -216,7 +206,7 @@ def editproducto():
     cursor.execute(sql, datos)
     conexion.commit()
     flash('Se actualizo Satisfactoriamente', 'success')
-    return redirect(url_for('listar_productos_agregados'))
+    return redirect(url_for('listar_productos'))
 
 
 @app.route('/logout')
