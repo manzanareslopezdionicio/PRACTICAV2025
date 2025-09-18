@@ -126,7 +126,7 @@ def listar_productos():
     return render_template("listarproducto.html", productos=productos)
 
 #-----AGREGAR PRODUCTOS-------------
-@app.route('/agregar_producto', methods=['GET', 'POST'])
+@app.route('/agregar_producto', methods=['POST', 'GET'])
 def agregar_producto():
     if request.method == 'POST':
         nombre = request.form['nombre']
@@ -159,18 +159,65 @@ def borrarUser(id):
     mysql.connection.commit()
     return redirect(url_for('listar'))
 
-# --------editar usuario--------------
-@app.route('/editusuario/<int:id>')
-def eliminarusuario(id):
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM usuario WHERE id=%s", (id,))
-    usuarios = cur.fetchone()
-    mysql.connection.commit()
-    return 
+
+#EDITAR DATOS DE LA BASE DEATOS
+@app.route('/edit/<int:id>') 
+def edit(id):
+    conexion=mysql.connection
+    cursor=conexion.cursor()
+    cursor.execute("SELECT * FROM usuario WHERE id=%s", (id,))
+    clientes=cursor.fetchone()
+    conexion.commit()
+    return render_template('editar.html')
+
+# --------Actualizar usuario--------------
+@app.route('/updateUsuari', methods = ['POST', 'GET'])
+def updateUsuari():
+    if request.method == "POST":
+        id = request.form['id']
+        nombre = request.form['nombre']
+        email = request.form['email']
+        password = request.form['password']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE usuario SET nombre=%s, email=%s, password=%s WHERE id=%s", (nombre, email, password, id))
+        flash ("Datos actualizados correctamente")
+        return redirect (url_for('listar'))
     
-@app.route('/actualizarusuario/<int:id>', methods='GET')
-def actualizarusuario(id):
-    pass
+# ACTUALIZAR USUARIO
+@app.route('/updateUsuario', methods=['POST'])
+def updateUsuario():
+    id = request.form['id']
+    nombre = request.form['nombre']
+    email = request.form['email']
+    password = request.form['password']
+    sql="UPDATE usuario SET nombre=%s, email=%s, password=%s WHERE id=%s"
+    datos=(nombre, email, password, id)
+    
+    conexion=mysql.connection
+    cursor=conexion.cursor()
+    cursor.execute(sql, datos)
+    conexion.commit()
+    flash('Se actualizo Satisfactoriamente', 'success')
+    return redirect(url_for('listar'))
+
+# ACTUALIZAR PRODUCTO
+@app.route('/editproducto', methods=['POST'])
+def editproducto():
+    id = request.form['id']
+    nombre = request.form['nombre']
+    precio = request.form['precio']
+    descripcion = request.form['descripcion']
+    sql="UPDATE producto SET nombre=%s, precion=%s, descripcion=%s WHERE id=%s"
+    datos=(nombre, precio, descripcion, id)
+    
+    conexion=mysql.connection
+    cursor=conexion.cursor()
+    cursor.execute(sql, datos)
+    conexion.commit()
+    flash('Se actualizo Satisfactoriamente', 'success')
+    return redirect(url_for('listar_productos_agregados'))
+
 
 @app.route('/logout')
 def logout():
