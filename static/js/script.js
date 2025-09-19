@@ -2,32 +2,7 @@ new DataTable('#tablaProductos');
 
 $(document).ready(function () {
     $('#tablaProductos').DataTable({
-        responsive: true,
-        dom: 'Bfrtilp',
-        buttons: [
-            {
-                extend: 'excelHtml5',
-                text: <i class='bi bi-file-earmark-excel-fill'></i>,
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success',
-            },
-            {
-                extend: 'pdfHtml5',
-                text: '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger',
-            },
-            {
-                extend: 'print',
-                text: '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info',
-            },
-        ],
 
-        language: {
-            url: '//cdn.datatables.net/plug-ins/2.3.4/i18n/es-ES.json',
-        },
         pageLength: 5,
         lengthMenu: [10, 25, 50],
         order: [[1, "asc"]],
