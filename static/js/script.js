@@ -1,149 +1,33 @@
-{% extends 'baseadmin.html' %}
-{% block title %}Lista de Productos{% endblock %}
+new DataTable('#tablaProductos');
 
-{% block body %}
-<!-- DataTables CSS -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+$(document).ready(function () {
+    $('#tablaProductos').DataTable({
+        responsive: true,
+        dom: 'Bfrtilp',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: <i class='bi bi-file-earmark-excel-fill'></i>,
+                titleAttr: 'Exportar a Excel',
+                className: 'btn btn-success',
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="fas fa-file-pdf"></i> ',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger',
+            },
+            {
+                extend: 'print',
+                text: '<i class="fa fa-print"></i> ',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-info',
+            },
+        ],
 
-<!--MENSAJE DE ALERTA SweetAlert2-->
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-<ul class=flashes>
-    {% for category, message in messages %}
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-            }
-        });
-        Toast.fire({
-            icon: "success",
-            title: "{{message}}"
-        });
-    </script>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
-
-
-<!--MENSAJE DE ALERTA PARA ELIMINACION SweetAlert2-->
-<script>
-    function confirmarEliminacion(url) {
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡No podrás revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = url;
-            }
-        });
-    }
-</script>
-
-<div class="container p-5 mt-3">
-    <!-- agregar un nuevo producto -->
-    <h2 class="text-center alert alert-danger py-4 shadow">Lista de Producto</h2>
-    <table id="tablaProductos" class="table table-hover table-bordered table-responsive table-striped shadow">
-        <thead class="table-dark">
-            <tr class="text-center">
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Descripción</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for Productos in productos %}
-            <tr>
-                <th scope="row">{{ loop.index }}</th>
-                <td>{{ Productos.nombre }}</td>
-                <td>{{ Productos.precio }}</td>
-                <td>{{ Productos.descripcion }}</td>
-                <td class="text-center ">
-                    <a href="/editproducto/{{Productos.id }}" class="btn btn-success btn-sm" title="Editar producto..."
-                        data-bs-toggle="modal" data-bs-target="#modaledit{{Productos.id}}"><i
-                            class="bi bi-pencil-fill"></i></a>
-
-                    <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrarproducto/{{Productos.id}}')"
-                        class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="Eliminar producto..."><i
-                            class="bi bi-trash-fill"></i></a>
-                </td>
-            </tr>
-            <!-- MODAL EDITAR PRODUCTO -->
-            <!-- Modal Body -->
-            <div class="modal fade" id="modaledit{{Productos.id}}" tabindex="-1" data-bs-backdrop="static"
-                data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalTitleId">Actualizar Producto</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ url_for('editproducto') }}" method="post">
-                                <div class="mb-3">
-                                    <input type="hidden" name="id" value="{{Productos.id}}">
-                                    <label for="nombre" class="form-label">Nombre del Producto</label>
-                                    <input type="text" class="form-control mi-input" id="nombre"
-                                        value="{{Productos.nombre}}" name="nombre" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precio" class="form-label">Precio</label>
-                                    <input type="number" class="form-control border-success" id="precio"
-                                        value="{{Productos.precio}}" name="precio" step="0.01" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="descripcion" class="form-label">Descripción</label>
-                                    <input type="text" class="form-control border-success" id="descripcion"
-                                        value="{{Productos.descripcion}}" name="descripcion" required>
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-outline-success">Actualizar</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Optional: Place to the bottom of scripts -->
-            <script>
-                const myModal = new bootstrap.Modal(
-                    document.getElementById("modalId"),
-                    options,
-                );
-            </script>
-            {% endfor %}
-
-        </tbody>
-    </table>
-</div>
-
-<!-- DataTables JS -->
-
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-<!--  Activar tooltips de Bootstrap -->
-<script>
-    var table = new DataTable('#tablaProductos', {
-        
+        language: {
+            url: '//cdn.datatables.net/plug-ins/2.3.4/i18n/es-ES.json',
+        },
         pageLength: 5,
         lengthMenu: [10, 25, 50],
         order: [[1, "asc"]],
@@ -386,6 +270,11 @@
                 renameTitle: 'Cambiar Nombre Estado',
             },
         },
+
     });
-</script>
-{% endblock %}
+});
+// Activar tooltips de Bootstrap
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+});

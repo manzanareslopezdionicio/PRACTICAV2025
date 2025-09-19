@@ -159,6 +159,14 @@ def borrarUser(id):
     mysql.connection.commit()
     return redirect(url_for('listar'))
 
+#-------- eliminar PRODUCTOS -------------
+@app.route('/borrarproducto/<int:id>', methods=['GET'])
+def borrarproducto(id):
+    flash('Sea borrado permanentemente', 'question')
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM productos WHERE id=%s", (id,))
+    mysql.connection.commit()
+    return redirect(url_for('listar_productos'))
 
 # --------Actualizar usuario--------------
 @app.route('/updateUsuari', methods = ['POST', 'GET'])
