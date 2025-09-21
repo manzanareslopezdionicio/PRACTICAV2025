@@ -17,24 +17,7 @@
 {% endif %}
 {% endwith %} -->
 
-<!-- MENSAJE DE ALERTA SweeAlert2 -->
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-<ul class=flashes>
-    {% for category, message in messages %}
-    <script type="text/javascript">
-        Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "{{ message }}",
-            showConfirmButton: false,
-            timer: 2000
-        });
-    </script>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
+
 
 <!----------------------- Main Container -------------------------->
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
@@ -86,14 +69,30 @@
                             style="background: linear-gradient(190deg, #f1eeda,#7a9f7a,#355e3b);">Iniciar
                             Sesión</button>
                     </div>
+                    <!-- MENSAJE DE ALERTA SweeAlert2 
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <ul class=flashes>
+                        {% for category, message in messages %}
+                        <script type="text/javascript">
+                            Swal.fire({
+                                position: "center",
+                                icon: "error",
+                                title: "{{ message }}",
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                        </script>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}-->
                     <!--  Mensaje de error-->
                     <!--                     {% if error %}
                     <div class="alert alert-danger" role="alert">
                         {{ error }}
                     </div>
                     {% endif %} -->
-
-
 
                 </form>
             </div>

@@ -14,7 +14,7 @@
             toast: true,
             position: "top-end",
             showConfirmButton: false,
-            timer: 3000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.onmouseenter = Swal.stopTimer;
@@ -126,7 +126,8 @@
                     <td>
                         <a href="/listar/{{mostrar.id}}" class="btn btn-success btn-sm" data-bs-toggle="modal"
                             data-bs-target="#modaledit{{mostrar.id}}">Editar</a>
-                        <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrarUser/{{mostrar.id}}')"
+                        <a href="javascript:void(0);" data-bs-toggle="mensaje" data-bs-placement="top"
+                        title="Eliminar producto..." onclick="confirmarEliminacion('/borrarUser/{{mostrar.id}}')"
                             class="btn btn-danger btn-sm">Eliminar</a>
                     </td>
                 </tr>
@@ -178,4 +179,10 @@
         {% endif %}
     </div>
 </div>
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="mensaje"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    }) 
+</script>
 {% endblock %}

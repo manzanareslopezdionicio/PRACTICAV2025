@@ -5,22 +5,6 @@
 
 {% block body %}
 
-<!-- <style>
-/* Estilos por defecto del input */
-.mi-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease; /* Añade una transición suave al cambio de color del borde */
-}
-
-/* Estilos al pasar el mouse sobre el input */
-.mi-input:hover {
-  border-color: blue; /* Cambia el color del borde a azul */
-  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); /* Añade una sombra sutil */
-}
-</style>
- -->
 <!--MENSAJE DE ALERTA SweetAlert2-->
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
@@ -32,7 +16,7 @@
             toast: true,
             position: "top-end",
             showConfirmButton: false,
-            timer: 3000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.onmouseenter = Swal.stopTimer;
@@ -43,7 +27,6 @@
             icon: "success",
             title: "{{message}}"
         });
-
     </script>
     {% endfor %}
 </ul>

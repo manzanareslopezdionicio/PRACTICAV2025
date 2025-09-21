@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<!--MENSAJE DE ALERTA SweetAlert2-->
+<!--MENSAJE DE ALERTA SweetAlert2 CONFIRMACION-->
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 <ul class=flashes>
@@ -15,7 +15,7 @@
             toast: true,
             position: "top-end",
             showConfirmButton: false,
-            timer: 3000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.onmouseenter = Swal.stopTimer;

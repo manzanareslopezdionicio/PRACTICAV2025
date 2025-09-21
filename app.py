@@ -54,7 +54,6 @@ def accesologin():
         email = request.form['email']
         password = request.form['password']
         
-        # Aquí puedes agregar la lógica para verificar las credenciales del usuario
         cursor = mysql.connection.cursor()
         
         # Verificar las credenciales del usuario
@@ -71,11 +70,12 @@ def accesologin():
                 flash('¡Bienvenido Administrador!', 'success')
                 return render_template('admin.html', user=user)
             elif user['id_rol'] == 2:
+                flash('¡Bienvenido Usuario!', 'success')
                 return render_template('usuario.html')
         else:
             flash('Usuario y contraseña incorrectos', 'danger')
             return render_template('login.html')
-        flash('Usuario y contraseña incorrectos', 'danger')
+        
 
 #REGISTRO DE USUARIOS
 @app.route('/crearusuario', methods=['GET', 'POST'])
@@ -89,7 +89,8 @@ def crearusuario():
     mysql.connection.commit()
     cursor.close()
     #return redirect(url_for('login'))
-    return render_template('registro.html', error1='Usuario Registrado Exitosamente')
+    flash('Agregado satisfactoriamente', 'success') # MENSAJE DE ALERTA
+    return render_template('registro.html')
 
 #INSERTAR DATOS A LA BASE DE DATOS
 @app.route('/guardar', methods=['Get','POST'])
