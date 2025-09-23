@@ -81,8 +81,8 @@
                             class="bi bi-pencil-fill"></i></a>
 
                     <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrarproducto/{{Productos.id}}')"
-                        class="btn btn-danger btn-sm" data-bs-toggle="mensaje"
-                        title="Eliminar producto..."><i class="bi bi-trash-fill"></i></a>
+                        class="btn btn-danger btn-sm" data-bs-toggle="mensaje" title="Eliminar producto..."><i
+                            class="bi bi-trash-fill"></i></a>
                 </td>
             </tr>
             <!-- MODAL EDITAR PRODUCTO -->
@@ -151,48 +151,62 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.2.5/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.2.5/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.2.5/js/buttons.colVis.min.js"></script>
 <!--  Activar tooltips de Bootstrap -->
 <script>
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="mensaje"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    
+
 </script>
 
 <!-- Configuracion DATATABLES -->
 <script>
     var table = new DataTable('#tablaProductos', {
 
+      //  layout: {
+      //  topStart: {
+      //      buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+      //  }
+  //  }
+
         layout: {
+
             top1Start: {
                 //buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
                 buttons: {
                     buttons: [
                         {
                             extend: 'copyHtml5',
-                            text: '<i class="bi bi-copy"></i>',
+                            text: '<i class="btn btn-outline-secondary btn-sm bi bi-copy"></i>',
                             titleAttr: 'Copiar',
-                            className: 'btn btn-primary'
+                            className: 'btn btn-primary',
                         },
                         {
                             extend: 'excel',
-                            text: '<i class="bi bi-file-earmark-excel-fill"></i>',
+                            text: '<i class="btn btn-outline-success btn-sm bi bi-file-earmark-excel-fill"></i>',
                             titleAttr: 'Exporta a Excel',
-                            className: 'btn btn-success'
+                            className: 'btn btn-success',
                         },
                         {
                             extend: 'pdf',
-                            text: '<i class="bi bi-file-earmark-pdf-fill"></i>',
+                            text: '<i class="btn btn-outline-danger btn-sm bi bi-file-earmark-pdf-fill"></i>',
                             titleAttr: 'Exporta a pdf',
                             className: 'btn btn-danger',
                         },
                         {
                             extend: 'print',
-                            text: '<i class="bi bi-printer-fill"></i> ',
+                            text: '<i class="btn btn-outline-info btn-sm bi bi-printer-fill"></i> ',
                             titleAttr: 'Imprimir',
                             className: 'btn btn-info',
                         },
+                        {
+                            extend: 'colvis',
+                            text: '<i class="btn btn-outline-secondary btn-sm bi bi-eye-fill"></i>',
+                            titleAttr: 'Visibilidad',
+                            className: 'btn btn-secondary',
+                        }
 
-                    ],
+                    ]
                 },
             },
         },
