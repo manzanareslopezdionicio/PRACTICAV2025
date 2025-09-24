@@ -58,9 +58,9 @@
 <div class="container p-5 mt-3">
     <!-- agregar un nuevo producto -->
     <h2 class="text-center alert alert-danger py-4 shadow">Lista de Producto</h2>
-    <table id="tablaProductos" class="table table-hover table-bordered table-responsive table-striped shadow">
+    <table id="tablaProductos" class="table table-hover table-bordered table-responsive table-striped shadow ">
         <thead class="table-dark">
-            <tr class="text-center">
+            <tr class="text-center ">
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -72,10 +72,10 @@
             {% for Productos in productos %}
             <tr>
                 <th scope="row">{{ loop.index }}</th>
-                <td>{{ Productos.nombre }}</td>
+                <td class="table-success">{{ Productos.nombre }}</td>
                 <td>{{ Productos.precio }}</td>
                 <td>{{ Productos.descripcion }}</td>
-                <td class="text-center ">
+                <td class="text-center table-success ">
                     <a href="/editproducto/{{Productos.id }}" class="btn btn-success btn-sm" title="Editar producto..."
                         data-bs-toggle="modal" data-bs-toggle="mensaje" data-bs-target="#modaledit{{Productos.id}}"><i
                             class="bi bi-pencil-fill"></i></a>
