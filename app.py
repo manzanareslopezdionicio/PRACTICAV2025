@@ -92,7 +92,7 @@ def crearusuario():
     flash('Agregado satisfactoriamente', 'success') # MENSAJE DE ALERTA
     return render_template('registro.html')
 
-#INSERTAR DATOS A LA BASE DE DATOS
+#INSERTAR USUARIO A LA BASE DE DATOS AL LISTAR USUARIOS
 @app.route('/guardar', methods=['Get','POST'])
 def guardar():
     if request.method == "POST":
@@ -107,7 +107,7 @@ def guardar():
         cur.close()
         return redirect(url_for('listar'))
 
-#-----LISTAR USUARIOS-------------
+#-----LISTAR USUARIOS REGISTRADOS-------------
 @app.route('/listar')
 #@login_required
 def listar(): 
