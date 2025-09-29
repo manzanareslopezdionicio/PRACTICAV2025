@@ -253,3 +253,34 @@ $(document).ready(function () {
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
 }); */
+
+// Mostrar y ocultar contraseña
+$(document).ready(function () {
+    $('#topass').on('mouseenter', function () {
+        $(this).css('color', 'blue');
+    }).on('mouseleave', function () {
+        // Si el campo está en modo texto, mantener rojo; si no, negro
+        var passwordField = $('#password');
+        if (passwordField.attr('type') === 'text') {
+            $(this).css('color', 'red');
+        } else {
+            $(this).css('color', 'black');
+        }
+    });
+
+    $('#topass').click(function () {
+        var passwordField = $('#password');
+        var passwordFieldType = passwordField.attr('type');
+
+        if (passwordFieldType === 'password') {
+            passwordField.attr('type', 'text');
+            $(this).removeClass('bi-eye-slash-fill').addClass('bi-eye-fill');
+            $(this).css('color', 'red');
+        } else {
+            passwordField.attr('type', 'password');
+            $(this).removeClass('bi-eye-fill').addClass('bi-eye-slash-fill');
+            $(this).css('color', 'black');
+        }
+    });
+});
+

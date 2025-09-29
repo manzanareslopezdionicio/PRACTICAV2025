@@ -88,11 +88,21 @@
                             placeholder="" required>
                         <label for="email" class="form-label">Correo electrónico</label>
                     </div>
-                    <div class="form-floating mb-2">
+                    <div class="form-floating mb-2 position-relative">
+                        <input type="password" name="password" id="password"
+                            class="form-control form-control-lg bg-light fs-6" placeholder="Password" required>
+                        <label for="password" class="form-label">Password</label>
+                        <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;"
+                            onclick="topass()">
+                            <i class="bi bi-eye-slash-fill" id="topass1" style="color:black; font-size:1.3rem;"></i>
+                        </span>
+                    </div>
+
+                    <!-- <div class="form-floating mb-2">
                         <input type="password" name="password" class="form-control form-control-lg bg-light fs-6"
                             placeholder="Contraseña">
                         <label for="password" class="form-label">Contraseña</label>
-                    </div>
+                    </div> -->
                     <div class="mb-2">
                         <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Registrarse</button>
                     </div>

@@ -59,44 +59,33 @@
                             placeholder="" required>
                         <label for="email" class="form-label">Correo electrónico</label>
                     </div>
-                    <div class="form-floating mb-2">
+                    <div class="form-floating mb-2 position-relative">
+                        <input type="password" name="password" id="password"
+                            class="form-control form-control-lg bg-light fs-6" placeholder="Password" required>
+                        <label for="password" class="form-label">Password</label>
+                        <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;"
+                            onclick="topass()">
+                            <i class="bi bi-eye-slash-fill" id="topass1" style="color:black; font-size:1.3rem;"></i>
+                        </span>
+                    </div>
+
+                    <!-- <div class="form-floating mb-2">
                         <input type="password" name="password" class="form-control form-control-lg bg-light fs-6"
                             placeholder="Password">
-                        <label for="password" class="form-label">Password</label>
-                    </div>
+                        <label for="password" class="form-label" >Password</label>
+                        <i class="bi bi-eye-slash-fill" id="topass"></i>
+                    </div> -->
                     <div class="p-4 mb-2">
                         <button type="submit" class="btn btn-lg btn-success w-100 fs-6"
                             style="background: linear-gradient(190deg, #f1eeda,#7a9f7a,#355e3b);">Iniciar
                             Sesión</button>
                     </div>
-                    <!-- MENSAJE DE ALERTA SweeAlert2 
-                    {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    <ul class=flashes>
-                        {% for category, message in messages %}
-                        <script type="text/javascript">
-                            Swal.fire({
-                                position: "center",
-                                icon: "error",
-                                title: "{{ message }}",
-                                showConfirmButton: false,
-                                timer: 2000
-                            });
-                        </script>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    {% endwith %}-->
-                    <!--  Mensaje de error-->
-                    <!--                     {% if error %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ error }}
-                    </div>
-                    {% endif %} -->
 
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="{{ url_for('static', filename='js/notifica.js') }}"></script>
+
 {% endblock %}
