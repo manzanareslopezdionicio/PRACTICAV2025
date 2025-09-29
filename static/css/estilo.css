@@ -3,7 +3,7 @@
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  transition: border-color 0.3s ease; /* Añade una transición suave al cambio de color del borde */
+  transition: border-color 0.5s ease; /* Añade una transición suave al cambio de color del borde */
 }
 
 /* Estilos al pasar el mouse sobre el input */
@@ -11,11 +11,36 @@
   border-color: rgb(2, 197, 28); /* Cambia el color del borde a azul */
   box-shadow: 0 0 10px rgb(2, 143, 30); /* Añade una sombra sutil */
 }
+/* Estilos para los botones */
+.mi-boton {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease; /* Añade una transición suave al cambio de color del borde */
+}
+
+.mi-boton:hover {
+  border-color: rgb(2, 197, 28); /* Cambia el color del borde a azul */
+  background-color: rgb(172, 205, 243);
+  box-shadow: 0 0 10px rgb(2, 143, 30); /* Añade una sombra sutil */
+}
+/* Estilos para los botones degradados */
+.btn-degradado {
+    background: linear-gradient(90deg, #355e3b, #7a9f7a, #cce1cc); /* Degradado de izquierda a derecha */
+    color: #fff !important;
+    border: none;
+    transition: background 0.3s;
+}
+.btn-degradado:hover {
+    background: linear-gradient(90deg, #7a9f7a, #355e3b, #cce1cc); /* Invertir los colores en el hover */
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(53, 94, 59, 0.2); /* Sombra más pronunciada al hacer hover */
+}
 
 /* Media Queries para responsividad */
 @media (max-width: 600px) {
     .formulario-contenedor {
-        padding: 20px; /* Reducir el padding en dispositivos móviles */
+        padding: 10px; /* Reducir el padding en dispositivos móviles */
         max-width: 100%;
     }
 }

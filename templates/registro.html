@@ -79,22 +79,22 @@
                     {% endif %}
 
                     <div class="form-floating mb-2">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="nombre" id="email"
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mi-input" name="nombre" id="email"
                             placeholder="" required>
                         <label for="name" class="form-label">Nombre completo</label>
                     </div>
                     <div class="form-floating mb-2">
-                        <input type="email" class="form-control form-control-lg bg-light fs-6" name="email" id="email"
+                        <input type="email" class="form-control form-control-lg bg-light fs-6 mi-input" name="email" id="email"
                             placeholder="" required>
                         <label for="email" class="form-label">Correo electrónico</label>
                     </div>
                     <div class="form-floating mb-2 position-relative">
                         <input type="password" name="password" id="password"
-                            class="form-control form-control-lg bg-light fs-6" placeholder="Password" required>
+                            class="form-control form-control-lg bg-light fs-6 mi-input" placeholder="Password" required>
                         <label for="password" class="form-label">Password</label>
                         <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;"
-                            onclick="topass()">
-                            <i class="bi bi-eye-slash-fill" id="topass1" style="color:black; font-size:1.3rem;"></i>
+                            onclick="topass1()">
+                            <i class="bi bi-eye-slash-fill" id="topass1" style="color:green; font-size:1.3rem;"></i>
                         </span>
                     </div>
 
@@ -104,7 +104,7 @@
                         <label for="password" class="form-label">Contraseña</label>
                     </div> -->
                     <div class="mb-2">
-                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Registrarse</button>
+                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6 btn-degradado">Registrarse</button>
                     </div>
                 </form>
             </div>

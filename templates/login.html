@@ -46,7 +46,7 @@
                 <div class="header-text text-center mb-2">
                     <h2>Iniciar Sesión</h2>
                     <div class="input-group mb-2">
-                        <button class="btn btn-lg btn-light w-100 fs-6"><img
+                        <button class="btn btn-lg btn-light w-100 fs-6 mi-boton"><img
                                 src="{{ url_for('static', filename='img/google.png') }}" style="width:20px"
                                 class="me-2"><small>Iniciar sesión con Google</small></button>
                     </div>
@@ -55,17 +55,17 @@
                 <form action="/accesologin" class="form-control" method="post">
 
                     <div class="form-floating mb-2">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="email" id="email"
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mi-input " name="email" id="email"
                             placeholder="" required>
                         <label for="email" class="form-label">Correo electrónico</label>
                     </div>
                     <div class="form-floating mb-2 position-relative">
                         <input type="password" name="password" id="password"
-                            class="form-control form-control-lg bg-light fs-6" placeholder="Password" required>
+                            class="form-control form-control-lg bg-light fs-6 mi-input" placeholder="Password" required>
                         <label for="password" class="form-label">Password</label>
                         <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;"
                             onclick="topass()">
-                            <i class="bi bi-eye-slash-fill" id="topass1" style="color:black; font-size:1.3rem;"></i>
+                            <i class="bi bi-eye-slash-fill" id="topass1" style="color:green; font-size:1.3rem;"></i>
                         </span>
                     </div>
 
@@ -76,8 +76,8 @@
                         <i class="bi bi-eye-slash-fill" id="topass"></i>
                     </div> -->
                     <div class="p-4 mb-2">
-                        <button type="submit" class="btn btn-lg btn-success w-100 fs-6"
-                            style="background: linear-gradient(190deg, #f1eeda,#7a9f7a,#355e3b);">Iniciar
+                        <button type="submit" class="btn btn-lg btn-success w-100 fs-6 btn-degradado"
+                   >Iniciar
                             Sesión</button>
                     </div>
 

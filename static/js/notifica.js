@@ -8,7 +8,7 @@ $(document).ready(function () {
         if (passwordField.attr('type') === 'text') {
             $(this).css('color', 'red');
         } else {
-            $(this).css('color', 'black');
+            $(this).css('color', 'green');
         }
     });
 
