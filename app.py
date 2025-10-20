@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, Response, session, flash
 from flask_mysqldb import MySQL
 from functools import wraps #decorador
+from flask_bcrypt import Bcrypt
 
 #from pprint import pprint
 
 app = Flask(__name__) #Creando el objeto aplicacion
 app.secret_key = 'appsecretkey' #Clave secreta para la sesion
 
+bcrypt = Bcrypt(app)
 mysql=MySQL() #Inicializando la extension de MySQL
 
  # conexion de la base de datos
@@ -91,9 +93,11 @@ def crearusuario():
     nombre = request.form['nombre']
     email = request.form['email']
     password = request.form['password']
-        
+
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+
     cursor = mysql.connection.cursor()
-    cursor.execute("INSERT INTO usuario (nombre, email, password, id_rol) VALUES (%s, %s, %s, '2')", (nombre, email, password))
+    cursor.execute("INSERT INTO usuario (nombre, email, password, id_rol) VALUES (%s, %s, %s, '2')", (nombre, email, hashed_password))
     mysql.connection.commit()
     cursor.close()
     #return redirect(url_for('login'))
@@ -108,8 +112,10 @@ def guardar():
         email = request.form['email']
         password = request.form['password']
         
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+        
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO usuario(nombre,email,password, id_rol) VALUES(%s, %s, %s, '2')", (nombre, email, password))
+        cur.execute("INSERT INTO usuario(nombre,email,password,id_rol) VALUES(%s, %s, %s, '2')", (nombre, email, hashed_password))
         mysql.connection.commit()
         flash('Agregado satisfactoriamente', 'success') # MENSAJE DE ALERTA
         cur.close()
