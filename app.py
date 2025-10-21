@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, Response, 
 from flask_mysqldb import MySQL
 from functools import wraps #decorador
 
+from passlib.hash import pbkdf2_sha256
+
+
 #from pprint import pprint
 
 app = Flask(__name__) #Creando el objeto aplicacion
@@ -58,18 +61,17 @@ def admin():
 # FUNCION DE ACCESO A LOGIN
 @app.route('/accesologin', methods=['GET', 'POST'])
 def accesologin(): 
-    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+    if request.method == 'POST': # and 'email' in request.form and 'password' in request.form:
         email = request.form['email']
         password = request.form['password']
         
         cursor = mysql.connection.cursor()
         
         # Verificar las credenciales del usuario
-        cursor.execute("SELECT * FROM usuario WHERE email = %s AND password = %s", (email, password))
+        cursor.execute("SELECT * FROM usuario WHERE email = %s", (email,))
         user = cursor.fetchone()
         cursor.close()  
-        if user:
-            
+        if user and pbkdf2_sha256.verify(password, user['password']):
             session['logueado'] = True
             session['id'] = user['id']
             session['nombre'] = user['nombre']
@@ -91,7 +93,7 @@ def accesologin():
 def crearusuario():
     nombre = request.form['nombre']
     email = request.form['email']
-    password = request.form['password']
+    password = pbkdf2_sha256.hash(request.form['password'])
         
     cursor = mysql.connection.cursor()
     cursor.execute("INSERT INTO usuario (nombre, email, password, id_rol) VALUES (%s, %s, %s, '2')", (nombre, email, password))
@@ -107,7 +109,7 @@ def guardar():
     if request.method == "POST":
         nombre = request.form['nombre']
         email = request.form['email']
-        password = request.form['password']
+        password = pbkdf2_sha256.hash(request.form['password'])
         
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO usuario(nombre,email,password, id_rol) VALUES(%s, %s, %s, '2')", (nombre, email, password))
@@ -198,7 +200,8 @@ def updateUsuario():
     id = request.form['id']
     nombre = request.form['nombre']
     email = request.form['email']
-    password = request.form['password']
+    password = pbkdf2_sha256.hash(request.form['password'])
+
     sql="UPDATE usuario SET nombre=%s, email=%s, password=%s WHERE id=%s"
     datos=(nombre, email, password, id)
     
