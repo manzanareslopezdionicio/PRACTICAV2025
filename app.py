@@ -55,8 +55,19 @@ def registro():
 @app.route('/admin')
 #@login_required
 def admin():
+    if 'id' not in session:
+        flash('Debes iniciar sesión para acceder.','warning')
+        return redirect(url_for('login'))
+    
     usuario = session.get('id')
-    return render_template('admin.html', usuario=usuario)
+    cur = mysql.connection.cursor()
+    # Ajusta los nombres de tabla si son distintos ('usuario', 'productos')
+    cur.execute("SELECT COUNT(*) AS total FROM usuario")
+    total_usuarios = cur.fetchone()['total'] if cur.rowcount != 0 else 0
+
+    cur.execute("SELECT COUNT(*) AS total FROM productos")
+    total_productos = cur.fetchone()['total'] if cur.rowcount != 0 else 0
+    return render_template('admin.html', usuario=usuario, total_usuarios=total_usuarios, total_productos=total_productos)
 
 # FUNCION DE ACCESO A LOGIN
 @app.route('/accesologin', methods=['GET', 'POST'])
