@@ -55,6 +55,39 @@
         /* ajusta el color según tu paleta */
     }
 
+body{
+   
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+svg{
+    width: 25px;
+    height: 25px;
+}
+
+#scrollBtn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: none;
+    outline: none;
+    background-color: rgb(0, 173, 0);
+    cursor: pointer;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+}
+#scrollBtn:hover{
+    background-color: rgb(0, 115, 0);
+}
+  
+
 /* Media Queries para responsividad */
 @media (max-width: 600px) {
     .formulario-contenedor {

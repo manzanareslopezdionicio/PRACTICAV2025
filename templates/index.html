@@ -2,10 +2,19 @@
 {% block title %}Prueba{% endblock title %}
 {% block body %}
 
+
+<button id="scrollBtn" style="display:none;" aria-label="Ir arriba" title="Ir arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor"
+        class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+    </svg>
+</button>
+
 <!-- Contenedor principal encabezado-->
 <div class="container-fluid p-5 bg-primary text-white text-center">
     <h1>My First Bootstrap Page</h1>
     <p>Resize this responsive page to see the effect!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
 </div>
 
 <!-- Contenedor de columnas pie de pagina -->
@@ -32,7 +41,8 @@
 <hr>
 <style>
     a.text-white:hover {
-        color: #0d6efd !important; /* Cambia este color por el que prefieras */
+        color: #0d6efd !important;
+        /* Cambia este color por el que prefieras */
         text-decoration: underline;
     }
 </style>
@@ -48,7 +58,7 @@
                     <a href="https://www.facebook.com/" target="_blank" class="text-white">Facebook</a>
                 </p>
             </div>
-           
+
             <div class="col-sm-6">
                 <h5>RECURSOS</h5>
                 <a href=""></a>
@@ -62,4 +72,8 @@
         <p class="text-center">Copyright © 2025 - UNAN Managua</p>
     </div>
 </footer>
+<script>
+
+</script>
+
 {% endblock %}

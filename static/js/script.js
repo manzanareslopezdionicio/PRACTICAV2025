@@ -284,3 +284,28 @@ $(document).ready(function () {
     });
 });
 
+// Botón de "Ir arriba"
+document.addEventListener('DOMContentLoaded', function () {
+    const scrollBtn = document.getElementById('scrollBtn');
+    if (!scrollBtn) return;
+
+    // Mostrar cuando se baja más de 50px
+    window.addEventListener('scroll', () => {
+        scrollBtn.style.display = window.scrollY > 50 ? 'block' : 'none';
+    });
+
+    // Al hacer click, subir suavemente
+    scrollBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollBtn.blur();
+    });
+
+    // Accesibilidad: permitir activar con Enter/Space
+    scrollBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+});
