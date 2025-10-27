@@ -76,13 +76,13 @@
                 <td>{{ Productos.precio }}</td>
                 <td>{{ Productos.descripcion }}</td>
                 <td class="text-center table-success ">
-                    <a href="/editproducto/{{Productos.id }}" class="btn btn-success btn-sm" title="Editar producto..."
-                        data-bs-toggle="modal" data-bs-toggle="mensaje" data-bs-target="#modaledit{{Productos.id}}"><i
-                            class="bi bi-pencil-fill"></i></a>
+                    <a href="/editproducto/{{Productos.id }}" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar producto..."
+                        data-bs-target="#modaledit{{Productos.id}}"><i class="bi bi-pencil-fill"></i></a>
 
                     <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrarproducto/{{Productos.id}}')"
-                        class="btn btn-danger btn-sm" data-bs-toggle="mensaje" title="Eliminar producto..."><i
-                            class="bi bi-trash-fill"></i></a>
+                        class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Eliminar producto..."><i class="bi bi-trash-fill"></i></a>
                 </td>
             </tr>
             <!-- MODAL EDITAR PRODUCTO -->
@@ -154,23 +154,25 @@
 <script src="https://cdn.datatables.net/buttons/3.2.5/js/buttons.colVis.min.js"></script>
 <!--  Activar tooltips de Bootstrap -->
 <script>
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="mensaje"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(function (el) {
+            new bootstrap.Tooltip(el);
+        });
+    });
 </script>
 
 <!-- Configuracion DATATABLES -->
 <script>
     var table = new DataTable('#tablaProductos', {
 
-      //  layout: {
-      //  topStart: {
-      //      buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-      //  }
-  //  }
+        //  layout: {
+        //  topStart: {
+        //      buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        //  }
+        //  }
 
         layout: {
-
             top1Start: {
                 //buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
                 buttons: {

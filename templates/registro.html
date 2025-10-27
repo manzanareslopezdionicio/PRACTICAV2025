@@ -79,18 +79,30 @@
                     {% endif %}
 
                     <div class="form-floating mb-2">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mi-input" name="nombre" id="email"
-                            placeholder="" required>
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mi-input" name="nombre"
+                            id="nombre" placeholder="" 
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" 
+                            title="Ingrese su nombre completo"
+                            required>
                         <label for="name" class="form-label">Nombre completo</label>
                     </div>
                     <div class="form-floating mb-2">
-                        <input type="email" class="form-control form-control-lg bg-light fs-6 mi-input" name="email" id="email"
-                            placeholder="" required>
+                        <input type="email" class="form-control form-control-lg bg-light fs-6 mi-input" name="email"
+                            id="email" placeholder="" 
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="bottom"
+                            title="Ingrese su correo electrónico"
+                            required>
                         <label for="email" class="form-label">Correo electrónico</label>
                     </div>
                     <div class="form-floating mb-2 position-relative">
                         <input type="password" name="password" id="password"
-                            class="form-control form-control-lg bg-light fs-6 mi-input" placeholder="Password" required>
+                            class="form-control form-control-lg bg-light fs-6 mi-input" placeholder="Password"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="bottom"
+                            title="Ingrese su contraseña"
+                            required>
                         <label for="password" class="form-label">Password</label>
                         <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;"
                             onclick="topass1()">
@@ -104,11 +116,21 @@
                         <label for="password" class="form-label">Contraseña</label>
                     </div> -->
                     <div class="mb-2">
-                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6 btn-degradado">Registrarse</button>
+                        <button type="submit"
+                            class="btn btn-lg btn-primary w-100 fs-6 btn-degradado">Registrarse</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<!-- Inicializar tooltips (colocar después de cargar bootstrap.js) -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (el) {
+        new bootstrap.Tooltip(el);
+    });
+});
+</script>
 {% endblock %}
