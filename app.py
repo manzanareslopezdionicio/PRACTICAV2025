@@ -78,6 +78,14 @@ def accesologin():
         
         cursor = mysql.connection.cursor()
         
+        cur = mysql.connection.cursor()
+        # Ajusta los nombres de tabla si son distintos ('usuario', 'productos')
+        cur.execute("SELECT COUNT(*) AS total FROM usuario")
+        total_usuarios = cur.fetchone()['total'] if cur.rowcount != 0 else 0
+
+        cur.execute("SELECT COUNT(*) AS total FROM productos")
+        total_productos = cur.fetchone()['total'] if cur.rowcount != 0 else 0
+        
         # Verificar las credenciales del usuario
         cursor.execute("SELECT * FROM usuario WHERE email = %s", (email,))
         user = cursor.fetchone()
@@ -90,7 +98,7 @@ def accesologin():
             
             if user['id_rol'] == 1:
                 flash('¡Bienvenido Administrador!', 'success')
-                return render_template('admin.html', user=user)
+                return render_template('admin.html', user=user , total_usuarios=total_usuarios, total_productos=total_productos)
             elif user['id_rol'] == 2:
                 flash('¡Bienvenido Usuario!', 'success')
                 return render_template('usuario.html')

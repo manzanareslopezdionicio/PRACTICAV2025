@@ -37,6 +37,24 @@
     box-shadow: 0 4px 12px rgba(53, 94, 59, 0.2); /* Sombra más pronunciada al hacer hover */
 }
 
+/* Hover para las cards: ligera elevación, zoom y transición suave */
+    .card-hover {
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        cursor: default;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18), 0 4px 8px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+    }
+
+    /* Opcional: cambiar el color del título al hacer hover */
+    .card-hover:hover .card-title {
+        color: #0747a6;
+        /* ajusta el color según tu paleta */
+    }
+
 /* Media Queries para responsividad */
 @media (max-width: 600px) {
     .formulario-contenedor {
