@@ -9,7 +9,7 @@ pip freeze > requirements.txt
 **Instalarlo**
 pip install -r requirements.txt
 
-##RECURSOS:
+**RECURSOS:**
 Python 3.13.5
 
 microframework web
