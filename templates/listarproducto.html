@@ -57,84 +57,87 @@
 
 <div class="container p-5 mt-3">
     <!-- agregar un nuevo producto -->
-    <h2 class="text-center alert alert-danger py-4 shadow">Lista de Producto</h2>
-    <table id="tablaProductos" class="table table-hover table-bordered table-responsive table-striped shadow ">
-        <thead class="table-dark">
-            <tr class="text-center ">
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Descripción</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for Productos in productos %}
-            <tr>
-                <th scope="row">{{ loop.index }}</th>
-                <td class="table-success">{{ Productos.nombre }}</td>
-                <td>{{ Productos.precio }}</td>
-                <td>{{ Productos.descripcion }}</td>
-                <td class="text-center table-success ">
-                    <a href="/editproducto/{{Productos.id }}" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar producto..."
-                        data-bs-target="#modaledit{{Productos.id}}"><i class="bi bi-pencil-fill"></i></a>
+    <div class="table-responsive">
+        <h2 class="text-center alert alert-danger py-4 shadow">Lista de Producto</h2>
+        <table id="tablaProductos" class="table table-hover table-bordered table-striped shadow ">
+            <thead class="table-dark">
+                <tr class="text-center ">
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Productos in productos %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td class="table-success">{{ Productos.nombre }}</td>
+                    <td>{{ Productos.precio }}</td>
+                    <td>{{ Productos.descripcion }}</td>
+                    <td class="text-center table-success ">
+                        <a href="/editproducto/{{Productos.id }}" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar producto..."
+                            data-bs-target="#modaledit{{Productos.id}}"><i class="bi bi-pencil-fill"></i></a>
 
-                    <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrarproducto/{{Productos.id}}')"
-                        class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        title="Eliminar producto..."><i class="bi bi-trash-fill"></i></a>
-                </td>
-            </tr>
-            <!-- MODAL EDITAR PRODUCTO -->
-            <!-- Modal Body -->
-            <div class="modal fade" id="modaledit{{Productos.id}}" tabindex="-1" data-bs-backdrop="static"
-                data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalTitleId">Actualizar Producto</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ url_for('editproducto') }}" method="post">
-                                <div class="mb-3">
-                                    <input type="hidden" name="id" value="{{Productos.id}}">
-                                    <label for="nombre" class="form-label">Nombre del Producto</label>
-                                    <input type="text" class="form-control mi-input" id="nombre"
-                                        value="{{Productos.nombre}}" name="nombre" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precio" class="form-label">Precio</label>
-                                    <input type="number" class="form-control border-success" id="precio"
-                                        value="{{Productos.precio}}" name="precio" step="0.01" required>
-                                </div>
+                        <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrarproducto/{{Productos.id}}')"
+                            class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            title="Eliminar producto..."><i class="bi bi-trash-fill"></i></a>
+                    </td>
+                </tr>
+                <!-- MODAL EDITAR PRODUCTO -->
+                <!-- Modal Body -->
+                <div class="modal fade" id="modaledit{{Productos.id}}" tabindex="-1" data-bs-backdrop="static"
+                    data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitleId">Actualizar Producto</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ url_for('editproducto') }}" method="post">
+                                    <div class="mb-3">
+                                        <input type="hidden" name="id" value="{{Productos.id}}">
+                                        <label for="nombre" class="form-label">Nombre del Producto</label>
+                                        <input type="text" class="form-control mi-input" id="nombre"
+                                            value="{{Productos.nombre}}" name="nombre" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="precio" class="form-label">Precio</label>
+                                        <input type="number" class="form-control border-success" id="precio"
+                                            value="{{Productos.precio}}" name="precio" step="0.01" required>
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label for="descripcion" class="form-label">Descripción</label>
-                                    <input type="text" class="form-control border-success" id="descripcion"
-                                        value="{{Productos.descripcion}}" name="descripcion" required>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="descripcion" class="form-label">Descripción</label>
+                                        <input type="text" class="form-control border-success" id="descripcion"
+                                            value="{{Productos.descripcion}}" name="descripcion" required>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn  btn-outline-success">Actualizar</button>
+                            </div>
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn  btn-outline-success">Actualizar</button>
-                        </div>
-                        </form>
                     </div>
                 </div>
-            </div>
 
-            <!-- Optional: Place to the bottom of scripts -->
-            <script>
-                const myModal = new bootstrap.Modal(
-                    document.getElementById("modalId"),
-                    options,
-                );
-            </script>
-            {% endfor %}
+                <!-- Optional: Place to the bottom of scripts -->
+                <script>
+                    const myModal = new bootstrap.Modal(
+                        document.getElementById("modalId"),
+                        options,
+                    );
+                </script>
+                {% endfor %}
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- DataTables JS -->
@@ -165,7 +168,6 @@
 <!-- Configuracion DATATABLES -->
 <script>
     var table = new DataTable('#tablaProductos', {
-
         //  layout: {
         //  topStart: {
         //      buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
@@ -212,6 +214,7 @@
                 },
             },
         },
+        responsive: true,
         pageLength: 5,
         lengthMenu: [10, 25, 50],
         order: [[1, "asc"]],
