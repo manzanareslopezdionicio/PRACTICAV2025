@@ -63,18 +63,19 @@
         <div class="row text-center">
             <!-- Card para el perfil del usuario -->
             <div class="col-sm-4 mb-3 mb-sm-0">
-                <div class="card card-hover" style="background: linear-gradient(180deg, #355e3b, #7a9f7a, #f1eeda);">
+                <div class="card card-hover bg-success bg-opacity-10">
+                <!--  style="background: linear-gradient(180deg, #355e3b, #7a9f7a, #f1eeda);"> -->
                     <div class="row g-0">
                         <div class="col-md-8">
                             <div class="card-body">
-                                <div class="card-body text-white">
+                                <div class="card-body ">
                                     <h5 class="card-title">Perfil del Usuario</h5>
                                     <h2 class="fw-bold">{{ total_usuarios }} Usuarios</h2>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 align-content-center">
-                            <img src="{{ url_for('static', filename='img/user.png') }}" class="img-fluid rounded-start"
+                            <img src="{{ url_for('static', filename='img/user.png') }}" class="img-fluid rounded-5"
                                 alt="Agregar Usuario ...">
                         </div>
                         <div class="d-grid gap-2 mb-3 px-3">
@@ -86,11 +87,13 @@
             </div>
             <!-- Card para registrar productos -->
             <div class="col-sm-4 mb-3 mb-sm-0">
-                <div class="card card-hover" style="background: linear-gradient(180deg, #042bf1,#367cd9,#ffffff);">
+                <div class="card card-hover bg-success bg-opacity-10">
+
+                <!-- </div> style="background: linear-gradient(180deg, #042bf1,#367cd9,#ffffff);"> -->
                     <div class="row g-0">
                         <div class="col-md-8">
                             <div class="card-body">
-                                <div class="card-body text-white">
+                                <div class="card-body">
                                     <h5 class="card-title">Registrar Productos</h5>
                                     <h2 class="fw-bold">{{ total_productos }} Productos</h2>
                                 </div>
@@ -99,7 +102,7 @@
                         <div class="col-md-4 align-content-center">
                             <a href="{{ url_for('listar_productos_agregados') }}">
                                 <img src="{{ url_for('static', filename='img/agregarP.png') }}"
-                                    class="img-fluid rounded-start" alt="..."></a>
+                                    class="img-fluid rounded-5" alt="..."></a>
                         </div>
                         <div class="d-grid gap-2 mb-3 px-3">
                             <a href="{{ url_for('listar_productos_agregados') }}"
@@ -111,11 +114,13 @@
             </div>
             <!-- Card para visualizar productos -->
             <div class="col-sm-4 mb-3 mb-sm-0">
-                <div class="card card-hover" style="background: linear-gradient(180deg, #0b235c,#3d85a9,#e0f7ff);">
+                <div class="card card-hover bg-success bg-opacity-10">
+
+               <!--  </div> style="background: linear-gradient(180deg, #0b235c,#3d85a9,#e0f7ff);" -->
                     <div class="row g-0">
                         <div class="col-md-8">
                             <div class="card-body">
-                                <div class="card-body text-white">
+                                <div class="card-body">
                                     <h5 class="card-title">Visualizar Productos</h5>
                                     <!--  <h2 class="fw-bold">{{ total_productos }} Productos</h2>-->
                                 </div>
@@ -124,7 +129,7 @@
                         <div class="col-md-4 mb-3 align-content-center">
                             <a href="{{ url_for('listar_productos') }}">
                                 <img src="{{ url_for('static', filename='img/listarp.png') }}"
-                                    class="img-fluid rounded-start" alt="..."></a>
+                                    class="img-fluid rounded-5" alt="..."></a>
                         </div>
                         <div class="d-grid gap-2 mb-3 px-3">
                             <a href="{{ url_for('listar_productos') }}" class="btn btn-outline-success btn-lg">Ver

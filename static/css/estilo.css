@@ -51,7 +51,7 @@
 
     /* Opcional: cambiar el color del título al hacer hover */
     .card-hover:hover .card-title {
-        color: #0747a6;
+        color: #058b12;
         /* ajusta el color según tu paleta */
     }
 
