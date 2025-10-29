@@ -67,7 +67,14 @@ def admin():
 
     cur.execute("SELECT COUNT(*) AS total FROM productos")
     total_productos = cur.fetchone()['total'] if cur.rowcount != 0 else 0
-    return render_template('admin.html', usuario=usuario, total_usuarios=total_usuarios, total_productos=total_productos)
+    
+     # Distribución por nombre de producto (top 10). Ajusta 'nombre' según tu esquema.
+    #cur.execute("SELECT nombre, COUNT(*) AS cantidad FROM productos GROUP BY nombre ORDER BY cantidad DESC LIMIT 10")
+    #rows = cur.fetchall()
+   # #product_labels = [r['nombre'] for r in rows]
+   # product_values = [r['cantidad'] for r in rows] 
+    
+    return render_template('admin.html', usuario=usuario, total_usuarios=total_usuarios, total_productos=total_productos)   
 
 # FUNCION DE ACCESO A LOGIN
 @app.route('/accesologin', methods=['GET', 'POST'])
