@@ -56,12 +56,18 @@
 
                     <div class="form-floating mb-2">
                         <input type="text" class="form-control form-control-lg bg-light fs-6 mi-input " name="email" id="email"
-                            placeholder="" required>
+                            placeholder="" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-placement="bottom" 
+                            title="Ingrese su correo electrónico"
+                            required>
                         <label for="email" class="form-label">Correo electrónico</label>
                     </div>
                     <div class="form-floating mb-2 position-relative">
                         <input type="password" name="password" id="password"
-                            class="form-control form-control-lg bg-light fs-6 mi-input" placeholder="Password" required>
+                            class="form-control form-control-lg bg-light fs-6 mi-input" placeholder="Password" 
+                            
+                            required>
                         <label for="password" class="form-label">Password</label>
                         <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;"
                             onclick="topass()">
