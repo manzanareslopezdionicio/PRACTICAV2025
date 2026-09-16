@@ -12,7 +12,7 @@ app.secret_key = 'appsecretkey' #Clave secreta para la sesion
 
 mysql=MySQL() #Inicializando la extension de MySQL
 
- # conexion de la base de datos
+# conexion de la base de datos
 #app.config['MYSQL_HOST'] = 'localhost'
 ##app.config['MYSQL_PORT'] = 3306
 #app.config['MYSQL_USER'] = 'root'
